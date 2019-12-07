@@ -5,7 +5,7 @@ export const createDatabseConn = async () => {
   return process.env.NODE_ENV === 'production'
     ? createConnection({
         ...connectionOptions,
-        name: 'production'
+        name: 'default'
       } as any)
-    : createConnection({ ...connectionOptions, name: 'development' })
+    : createConnection({ ...connectionOptions, name: 'default' })
 }
