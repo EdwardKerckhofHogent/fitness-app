@@ -1,0 +1,32 @@
+[
+  {
+    "name": "production",
+    "type": "mysql",
+    "host": "gator3160.hostgator.com",
+    "port": 3306,
+    "username": "zonedev_edward",
+    "password": "edwardmysql123456",
+    "database": "fitness_app_db",
+    "entities": ["src/entity/*.*"],
+    "migrationsTableName": "custom_migration_table",
+    "migrations": ["src/migration/*.*"],
+    "cli": {
+      "migrationsDir": "src/migration"
+    }
+  },
+  {
+    "name": "development",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "brother005",
+    "database": "fitness_app_db_development",
+    "entities": ["src/entity/*.*"],
+    "migrationsTableName": "custom_migration_table",
+    "migrations": ["src/migration/*.*"],
+    "cli": {
+      "migrationsDir": "src/migration"
+    }
+  }
+]
