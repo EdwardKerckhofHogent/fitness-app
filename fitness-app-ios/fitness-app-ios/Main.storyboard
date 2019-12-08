@@ -135,6 +135,9 @@
                                                                 <integer key="value" value="25"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="loginButtonTapped:" destination="MFc-XL-lSj" eventType="touchUpInside" id="w6a-9A-sR3"/>
+                                                        </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p6s-eY-0qK">
                                                         <rect key="frame" x="0.0" y="312" width="354" height="50"/>
@@ -311,6 +314,9 @@
                                                                 <integer key="value" value="25"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="registerButtonTapped:" destination="MFc-XL-lSj" eventType="touchUpInside" id="AwE-aZ-VjQ"/>
+                                                        </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5eh-Bc-Gm3">
                                                         <rect key="frame" x="0.0" y="312" width="354" height="50"/>
@@ -363,10 +369,16 @@
                     <connections>
                         <outlet property="goToLoginButton" destination="M7j-Xs-Zrr" id="Mst-LG-4zi"/>
                         <outlet property="goToRegistrationButton" destination="adm-Ln-LfN" id="I4e-Z6-y2G"/>
+                        <outlet property="loginEmailTexField" destination="Xnu-cQ-65m" id="XFQ-yM-Oem"/>
+                        <outlet property="loginPasswordTextField" destination="Tcs-an-hvx" id="IyZ-Qn-uWV"/>
                         <outlet property="loginStackView" destination="ka2-6v-g7w" id="pJm-FD-ilS"/>
+                        <outlet property="registerEmailTextField" destination="v2m-Mh-gPH" id="R4a-kx-83m"/>
+                        <outlet property="registerPasswordTextField" destination="I8m-qj-1MR" id="8mW-sE-A0T"/>
+                        <outlet property="registerRepeatPasswordTextField" destination="kdH-iS-jil" id="U8T-RD-FDG"/>
                         <outlet property="registerStackView" destination="tiE-En-8mt" id="Ulb-yG-bgU"/>
                         <outletCollection property="errorLabels" destination="MDs-d4-grI" collectionClass="NSMutableArray" id="AcZ-8Z-trJ"/>
                         <outletCollection property="errorLabels" destination="tyF-mu-3yt" collectionClass="NSMutableArray" id="OAg-6c-yYp"/>
+                        <segue destination="tKD-tc-VKz" kind="presentation" identifier="HomeSegue" modalPresentationStyle="fullScreen" id="oJo-el-Y3n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMJ-b1-RIs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
