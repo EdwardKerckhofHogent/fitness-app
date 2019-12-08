@@ -10,7 +10,7 @@ import UIKit
 
 class AuthViewController: UIViewController {
     @IBOutlet var loginStackView: UIStackView!
-    @IBOutlet var loginEmailTexField: UITextField!
+    @IBOutlet var loginEmailTextField: UITextField!
     @IBOutlet var loginPasswordTextField: UITextField!
     @IBOutlet var goToRegistrationButton: UIButton!
     
@@ -48,8 +48,7 @@ class AuthViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         errorMessages = []
         
-        let loginEmailValidationResponse =  validator.validate(input: loginEmailTexField, with: [.notEmpty])
-        
+        let loginEmailValidationResponse =  validator.validate(input: loginEmailTextField, with: [.notEmpty])
         let loginPasswordValidationResponse = validator.validate(input: loginPasswordTextField, with: [.notEmpty])
         
         if !loginEmailValidationResponse || !loginPasswordValidationResponse {
@@ -58,13 +57,12 @@ class AuthViewController: UIViewController {
                 setErrorInLabel(label: 1, error: error)
             }
         } else {
-            print("Login")
-            apollo.perform(mutation: LoginMutation(input: UserInput.init(password: loginPasswordTextField.text!, email: loginEmailTexField.text!))) { result in
+            apollo.perform(mutation: LoginMutation(input: UserInput.init(password: loginPasswordTextField.text!, email: loginEmailTextField.text!))) { result in
                 guard let data = try? result.get().data else { return }
-                if data.login == nil {
-                    self.setErrorInLabel(label: 1, error: "Verkeerd email/wachtwoord")
+                if ((data.login?.errors?[0]) != nil) {
+                    self.setErrorInLabel(label: 1, error: data.login!.errors![0].message)
                 } else {
-                    // Successful login -> navigate to home
+                    // Successful login -> navigate to home and set user to logged in with UserDefaults
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
                 }
             }
@@ -72,7 +70,29 @@ class AuthViewController: UIViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-        print("Register")
+        errorMessages = []
+        
+        let registerEmailValidationResponse =  validator.validate(input: registerEmailTextField, with: [.notEmpty])
+        let registerPasswordValidationResponse = validator.validate(input: registerPasswordTextField, with: [.notEmpty])
+        let registerRepeatPasswordValidationResponse = validator.validate(input: registerRepeatPasswordTextField, with: [.notEmpty])
+        
+        if !registerEmailValidationResponse || !registerPasswordValidationResponse || !registerRepeatPasswordValidationResponse {
+            errorMessages.append("Form validatie fouten")
+            for error in errorMessages {
+                setErrorInLabel(label: 0, error: error)
+            }
+        } else {
+            apollo.perform(mutation: RegisterMutation(input: UserInput.init(password: registerPasswordTextField.text!, email: registerEmailTextField.text!, repeatPassword: registerRepeatPasswordTextField.text!))) { result in
+                guard let data = try? result.get().data else { return }
+                
+                if ((data.register.errors?[0]) != nil) {
+                    self.setErrorInLabel(label: 0, error: data.register.errors![0].message)
+                } else {
+                   // Successful login -> navigate to home and set user to logged in with UserDefaults
+                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                }
+            }
+        }
     }
     
     func setErrorInLabel(label: Int, error: String) {

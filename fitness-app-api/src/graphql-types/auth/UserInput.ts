@@ -7,4 +7,8 @@ export class UserInput extends PasswordInput {
   @Field()
   @Length(5)
   email: string
+
+  @Field({ nullable: true })
+  @Length(5)
+  repeatPassword: string
 }

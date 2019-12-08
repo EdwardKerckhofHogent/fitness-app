@@ -6,7 +6,6 @@ import {
   Ctx,
   UseMiddleware
 } from 'type-graphql'
-import { ApolloError } from 'apollo-server-core'
 import bcrypt from 'bcryptjs'
 import { getConnection } from 'typeorm'
 
@@ -32,11 +31,31 @@ export class AuthResolver {
 
   @Mutation(_ => UserResponse)
   async register(
-    @Arg('input') { email, password }: UserInput
+    @Arg('input') { email, password, repeatPassword }: UserInput
   ): Promise<UserResponse> {
     const existingUser = await User.findOne({ where: { email } })
 
-    if (existingUser) throw new ApolloError('Email already in use')
+    if (existingUser) {
+      return {
+        errors: [
+          {
+            path: 'email',
+            message: 'Email wordt al gebruikt'
+          }
+        ]
+      }
+    }
+
+    if (password !== repeatPassword) {
+      return {
+        errors: [
+          {
+            path: 'repeatPassword',
+            message: 'Wachtwoorden zijn niet gelijk aan elkaar'
+          }
+        ]
+      }
+    }
 
     const hashedPassword = await bcrypt.hash(password, 12)
 
@@ -55,13 +74,40 @@ export class AuthResolver {
   ): Promise<UserResponse> {
     const user = await User.findOne({ where: { email } })
 
-    if (!user) throw new ApolloError('User not found')
+    if (!user) {
+      return {
+        errors: [
+          {
+            path: 'email',
+            message: 'Gebruiker niet gevonden'
+          }
+        ]
+      }
+    }
 
     const valid = await bcrypt.compare(password, user.password)
 
-    if (!valid) throw new ApolloError('Invalid password')
+    if (!valid) {
+      return {
+        errors: [
+          {
+            path: 'password',
+            message: 'Ongeldig wachtwoord'
+          }
+        ]
+      }
+    }
 
-    if (!user.confirmed) throw new ApolloError('User email not confirmed.')
+    if (!user.confirmed) {
+      return {
+        errors: [
+          {
+            path: 'confirmed',
+            message: 'Account nog niet geconfirmeerd'
+          }
+        ]
+      }
+    }
 
     // Login successful
     const { refreshToken, accessToken } = createTokens(user)

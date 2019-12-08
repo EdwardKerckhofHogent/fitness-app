@@ -34,16 +34,16 @@
                                         <rect key="frame" x="0.0" y="155" width="414" height="500"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyF-mu-3yt">
-                                                <rect key="frame" x="30" y="8" width="354" height="12"/>
+                                                <rect key="frame" x="30" y="8" width="354" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="mCH-I3-BO3"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zf-OJ-E0F">
-                                                <rect key="frame" x="30" y="40" width="354" height="70"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="6jP-cD-C2c"/>
-                                                </constraints>
+                                                <rect key="frame" x="30" y="48" width="354" height="62"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="25"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -189,16 +189,16 @@
                                         <rect key="frame" x="0.0" y="155" width="414" height="500"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDs-d4-grI">
-                                                <rect key="frame" x="30" y="8" width="354" height="12"/>
+                                                <rect key="frame" x="30" y="8" width="354" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="g8i-JN-ihA"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registreer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-Fw-yko">
-                                                <rect key="frame" x="30" y="40" width="354" height="70"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="mYg-bl-S36"/>
-                                                </constraints>
+                                                <rect key="frame" x="30" y="48" width="354" height="62"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="25"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -369,7 +369,7 @@
                     <connections>
                         <outlet property="goToLoginButton" destination="M7j-Xs-Zrr" id="Mst-LG-4zi"/>
                         <outlet property="goToRegistrationButton" destination="adm-Ln-LfN" id="I4e-Z6-y2G"/>
-                        <outlet property="loginEmailTexField" destination="Xnu-cQ-65m" id="XFQ-yM-Oem"/>
+                        <outlet property="loginEmailTextField" destination="Xnu-cQ-65m" id="h6l-1C-8oD"/>
                         <outlet property="loginPasswordTextField" destination="Tcs-an-hvx" id="IyZ-Qn-uWV"/>
                         <outlet property="loginStackView" destination="ka2-6v-g7w" id="pJm-FD-ilS"/>
                         <outlet property="registerEmailTextField" destination="v2m-Mh-gPH" id="R4a-kx-83m"/>

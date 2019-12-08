@@ -20,13 +20,14 @@
 		2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */; };
 		2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2D239D3EF100AF318C /* Montserrat.otf */; };
 		2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42D7239D7C1300BA9D4F /* Validator.swift */; };
+		2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2BBA42D9239D996900BA9D4F /* Register.graphql */; };
+		2BBA42DE239D9A7D00BA9D4F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42DD239D9A7D00BA9D4F /* API.swift */; };
 		2BFF867A239D4E5A00999A86 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8679239D4E5A00999A86 /* Header.swift */; };
 		2BFF867E239D535600999A86 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF867D239D535600999A86 /* ShadowView.swift */; };
 		2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8680239D6E9C00999A86 /* HomeViewController.swift */; };
 		2BFF8684239D770B00999A86 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFF8683239D770B00999A86 /* Apollo */; };
 		2BFF8686239D770B00999A86 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFF8685239D770B00999A86 /* ApolloWebSocket */; };
 		2BFF868A239D780900999A86 /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2BFF8689239D780900999A86 /* Login.graphql */; };
-		2BFF868C239D784100999A86 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF868B239D784100999A86 /* API.swift */; };
 		2BFF868E239D789100999A86 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF868D239D789100999A86 /* Network.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,12 +68,13 @@
 		2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratBold.otf; sourceTree = "<group>"; };
 		2B4A8D2D239D3EF100AF318C /* Montserrat.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.otf; sourceTree = "<group>"; };
 		2BBA42D7239D7C1300BA9D4F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		2BBA42D9239D996900BA9D4F /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
+		2BBA42DC239D9A4100BA9D4F /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		2BBA42DD239D9A7D00BA9D4F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "fitness-app-ios/API.swift"; sourceTree = SOURCE_ROOT; };
 		2BFF8679239D4E5A00999A86 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2BFF867D239D535600999A86 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		2BFF8680239D6E9C00999A86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		2BFF8688239D77D800999A86 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		2BFF8689239D780900999A86 /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
-		2BFF868B239D784100999A86 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "fitness-app-ios/API.swift"; sourceTree = SOURCE_ROOT; };
 		2BFF868D239D789100999A86 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +136,7 @@
 				2B4A8CF0239D343000AF318C /* SceneDelegate.swift */,
 				2B4A8D24239D3C1A00AF318C /* Main.storyboard */,
 				2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */,
-				2BFF8688239D77D800999A86 /* schema.json */,
+				2BBA42DC239D9A4100BA9D4F /* schema.json */,
 				2B4A8CFC239D343100AF318C /* Info.plist */,
 				2B4A8D31239D3EF500AF318C /* Assets.Fonts */,
 				2B4A8CF7239D343100AF318C /* Assets.xcassets */,
@@ -172,9 +174,10 @@
 		2B4A8D27239D3D6500AF318C /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				2BFF868B239D784100999A86 /* API.swift */,
+				2BBA42DD239D9A7D00BA9D4F /* API.swift */,
 				2BFF868D239D789100999A86 /* Network.swift */,
 				2BFF8689239D780900999A86 /* Login.graphql */,
+				2BBA42D9239D996900BA9D4F /* Register.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				2B4A8D25239D3C1A00AF318C /* Main.storyboard in Resources */,
 				2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */,
 				2BFF868A239D780900999A86 /* Login.graphql in Resources */,
+				2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */,
 				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,
 				2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */,
@@ -379,8 +383,8 @@
 				2BFF867E239D535600999A86 /* ShadowView.swift in Sources */,
 				2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */,
 				2BFF867A239D4E5A00999A86 /* Header.swift in Sources */,
+				2BBA42DE239D9A7D00BA9D4F /* API.swift in Sources */,
 				2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */,
-				2BFF868C239D784100999A86 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
