@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8CEE239D343000AF318C /* AppDelegate.swift */; };
 		2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF0239D343000AF318C /* SceneDelegate.swift */; };
-		2B4A8CF3239D343000AF318C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF2239D343000AF318C /* ViewController.swift */; };
-		2B4A8CF6239D343000AF318C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF4239D343000AF318C /* Main.storyboard */; };
 		2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF7239D343100AF318C /* Assets.xcassets */; };
 		2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */; };
 		2B4A8D06239D343100AF318C /* fitness_app_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D05239D343100AF318C /* fitness_app_iosTests.swift */; };
 		2B4A8D11239D343100AF318C /* fitness_app_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D10239D343100AF318C /* fitness_app_iosUITests.swift */; };
+		2B4A8D21239D352400AF318C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D20239D352400AF318C /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +37,6 @@
 		2B4A8CEB239D343000AF318C /* fitness-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fitness-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4A8CEE239D343000AF318C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B4A8CF0239D343000AF318C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2B4A8CF2239D343000AF318C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2B4A8CF5239D343000AF318C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B4A8CF7239D343100AF318C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B4A8CFA239D343100AF318C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B4A8CFC239D343100AF318C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +46,7 @@
 		2B4A8D0C239D343100AF318C /* fitness-app-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fitness-app-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4A8D10239D343100AF318C /* fitness_app_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitness_app_iosUITests.swift; sourceTree = "<group>"; };
 		2B4A8D12239D343100AF318C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B4A8D20239D352400AF318C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +99,10 @@
 			children = (
 				2B4A8CEE239D343000AF318C /* AppDelegate.swift */,
 				2B4A8CF0239D343000AF318C /* SceneDelegate.swift */,
-				2B4A8CF2239D343000AF318C /* ViewController.swift */,
-				2B4A8CF4239D343000AF318C /* Main.storyboard */,
 				2B4A8CF7239D343100AF318C /* Assets.xcassets */,
 				2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */,
 				2B4A8CFC239D343100AF318C /* Info.plist */,
+				2B4A8D20239D352400AF318C /* LoginViewController.swift */,
 			);
 			path = "fitness-app-ios";
 			sourceTree = "<group>";
@@ -234,7 +231,6 @@
 			files = (
 				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,
-				2B4A8CF6239D343000AF318C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4A8CF3239D343000AF318C /* ViewController.swift in Sources */,
+				2B4A8D21239D352400AF318C /* LoginViewController.swift in Sources */,
 				2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */,
 				2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2B4A8CF4239D343000AF318C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B4A8CF5239D343000AF318C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
