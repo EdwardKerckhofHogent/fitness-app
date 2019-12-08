@@ -11,16 +11,26 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var loggedIn: Bool = false
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let loginScreen = LoginViewController()
         
-        window.rootViewController = loginScreen
-        
+        if loggedIn {
+            // Redorect user to home
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let homeVC = mainStoryBoard.instantiateViewController(withIdentifier: "homeViewController")
+
+            window.rootViewController = homeVC
+        } else {
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "loginViewController")
+
+            window.rootViewController = loginVC
+        }
         self.window = window
         window.makeKeyAndVisible()
     }

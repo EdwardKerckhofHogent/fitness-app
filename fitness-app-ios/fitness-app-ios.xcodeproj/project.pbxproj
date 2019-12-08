@@ -13,7 +13,15 @@
 		2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */; };
 		2B4A8D06239D343100AF318C /* fitness_app_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D05239D343100AF318C /* fitness_app_iosTests.swift */; };
 		2B4A8D11239D343100AF318C /* fitness_app_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D10239D343100AF318C /* fitness_app_iosUITests.swift */; };
-		2B4A8D21239D352400AF318C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D20239D352400AF318C /* LoginViewController.swift */; };
+		2B4A8D21239D352400AF318C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D20239D352400AF318C /* AuthViewController.swift */; };
+		2B4A8D25239D3C1A00AF318C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D24239D3C1A00AF318C /* Main.storyboard */; };
+		2B4A8D2A239D3E0D00AF318C /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D29239D3E0D00AF318C /* Header.xib */; };
+		2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */; };
+		2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */; };
+		2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2D239D3EF100AF318C /* Montserrat.otf */; };
+		2BFF867A239D4E5A00999A86 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8679239D4E5A00999A86 /* Header.swift */; };
+		2BFF867E239D535600999A86 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF867D239D535600999A86 /* ShadowView.swift */; };
+		2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8680239D6E9C00999A86 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +54,15 @@
 		2B4A8D0C239D343100AF318C /* fitness-app-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fitness-app-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4A8D10239D343100AF318C /* fitness_app_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitness_app_iosUITests.swift; sourceTree = "<group>"; };
 		2B4A8D12239D343100AF318C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B4A8D20239D352400AF318C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B4A8D20239D352400AF318C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		2B4A8D24239D3C1A00AF318C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2B4A8D29239D3E0D00AF318C /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
+		2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratBold.otf; sourceTree = "<group>"; };
+		2B4A8D2D239D3EF100AF318C /* Montserrat.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.otf; sourceTree = "<group>"; };
+		2BFF8679239D4E5A00999A86 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		2BFF867D239D535600999A86 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		2BFF8680239D6E9C00999A86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +113,17 @@
 		2B4A8CED239D343000AF318C /* fitness-app-ios */ = {
 			isa = PBXGroup;
 			children = (
+				2BFF867F239D6A3700999A86 /* Helpers */,
+				2B4A8D28239D3DF500AF318C /* Views */,
+				2B4A8D27239D3D6500AF318C /* GraphQL */,
+				2B4A8D26239D3C8E00AF318C /* ViewControllers */,
 				2B4A8CEE239D343000AF318C /* AppDelegate.swift */,
 				2B4A8CF0239D343000AF318C /* SceneDelegate.swift */,
-				2B4A8CF7239D343100AF318C /* Assets.xcassets */,
+				2B4A8D24239D3C1A00AF318C /* Main.storyboard */,
 				2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */,
 				2B4A8CFC239D343100AF318C /* Info.plist */,
-				2B4A8D20239D352400AF318C /* LoginViewController.swift */,
+				2B4A8D31239D3EF500AF318C /* Assets.Fonts */,
+				2B4A8CF7239D343100AF318C /* Assets.xcassets */,
 			);
 			path = "fitness-app-ios";
 			sourceTree = "<group>";
@@ -123,6 +144,49 @@
 				2B4A8D12239D343100AF318C /* Info.plist */,
 			);
 			path = "fitness-app-iosUITests";
+			sourceTree = "<group>";
+		};
+		2B4A8D26239D3C8E00AF318C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8D20239D352400AF318C /* AuthViewController.swift */,
+				2BFF8680239D6E9C00999A86 /* HomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2B4A8D27239D3D6500AF318C /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		2B4A8D28239D3DF500AF318C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8D29239D3E0D00AF318C /* Header.xib */,
+				2BFF8679239D4E5A00999A86 /* Header.swift */,
+				2BFF867D239D535600999A86 /* ShadowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2B4A8D31239D3EF500AF318C /* Assets.Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8D2D239D3EF100AF318C /* Montserrat.otf */,
+				2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */,
+				2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */,
+			);
+			path = Assets.Fonts;
+			sourceTree = "<group>";
+		};
+		2BFF867F239D6A3700999A86 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +293,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4A8D2A239D3E0D00AF318C /* Header.xib in Resources */,
+				2B4A8D25239D3C1A00AF318C /* Main.storyboard in Resources */,
+				2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */,
 				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,
+				2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */,
+				2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,9 +324,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4A8D21239D352400AF318C /* LoginViewController.swift in Sources */,
+				2B4A8D21239D352400AF318C /* AuthViewController.swift in Sources */,
 				2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */,
+				2BFF867E239D535600999A86 /* ShadowView.swift in Sources */,
 				2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */,
+				2BFF867A239D4E5A00999A86 /* Header.swift in Sources */,
+				2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
