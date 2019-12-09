@@ -30,7 +30,7 @@ export class AuthResolver {
       return {
         errors: [
           {
-            path: 'user id',
+            path: 'User id',
             message: 'No logged in user'
           }
         ]
