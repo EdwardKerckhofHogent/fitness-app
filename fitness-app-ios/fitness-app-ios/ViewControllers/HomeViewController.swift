@@ -9,22 +9,18 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    @IBOutlet var headerView: Header!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        headerView.logoutButton.isHidden = false
+        headerView.logoutButton.addTarget(self, action: #selector (logoutButtonTapped), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func logoutButtonTapped(_ sender: UIButton) {
+        print("Logout from home")
+        Network.logUserOut()
+        performSegue(withIdentifier: "LoginSegue", sender: nil)
     }
-    */
-
 }

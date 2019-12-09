@@ -5,8 +5,10 @@
 //  Created by Edward Kerckhof on 08/12/2019.
 //  Copyright © 2019 Edward Kerckhof. All rights reserved.
 //
+// URL (KeyChain): https://github.com/jrendel/SwiftKeychainWrapper (installed with Cocoapods)
 
 import UIKit
+import SwiftKeychainWrapper
 
 class AuthViewController: UIViewController {
     @IBOutlet var loginStackView: UIStackView!
@@ -29,6 +31,7 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateUI()
     }
     
@@ -62,10 +65,9 @@ class AuthViewController: UIViewController {
                 if ((data.errors?[0]) != nil) {
                     self.setErrorInLabel(label: 1, error: data.errors![0].message)
                 } else {
-                    // Successful login -> navigate to home and set user to logged in with UserDefaults
-                    print(data.accessToken!)
+                    // Successful login -> navigate to home and set user to logged in with KeyChainWrapper
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
-                    self.setLoggedIn(value: true)
+                    self.setLoggedIn(accessToken: data.accessToken!, key: "accessToken")
                 }
             }
         }
@@ -92,7 +94,7 @@ class AuthViewController: UIViewController {
                 } else {
                    // Successful login -> navigate to home and set user to logged in with UserDefaults
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
-                    self.setLoggedIn(value: true)
+                    self.setLoggedIn(accessToken: "fsefe", key: "accessToken")
                 }
             }
         }
@@ -103,8 +105,7 @@ class AuthViewController: UIViewController {
         errorLabels[label].text = error
     }
     
-    func setLoggedIn(value: Bool) {
-        UserDefaults.standard.set(value, forKey: "isLoggedIn")
-        UserDefaults.standard.synchronize()
+    func setLoggedIn(accessToken: String, key: String) {
+        KeychainWrapper.standard.set(accessToken, forKey: key)
     }
 }

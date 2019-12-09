@@ -15,11 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let loggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-        
         let window = UIWindow(windowScene: windowScene)
         
-        if loggedIn {
+        let accessToken: String? = Network.getAccessToken()
+        
+        if accessToken != nil {
             // Redorect user to home
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = mainStoryBoard.instantiateViewController(withIdentifier: "homeViewController")

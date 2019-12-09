@@ -14,7 +14,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
             <connections>
-                <outlet property="headerView" destination="iN0-l3-epB" id="tS5-ye-Zwa"/>
                 <outlet property="logoutButton" destination="swj-f6-abU" id="HUh-Py-3aR"/>
             </connections>
         </placeholder>
@@ -46,9 +45,6 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swj-f6-abU">
                     <rect key="frame" x="317" y="25" width="67" height="30"/>
                     <state key="normal" title="Uitloggen"/>
-                    <connections>
-                        <action selector="logoutButtonTapped:" destination="-1" eventType="touchUpInside" id="hy2-Qm-2XH"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

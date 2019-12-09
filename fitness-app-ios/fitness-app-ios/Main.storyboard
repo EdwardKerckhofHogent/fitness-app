@@ -54,7 +54,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0p-qv-KfK" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@hotmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xnu-cQ-65m">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="edward@zonedev.be" borderStyle="roundedRect" placeholder="email@hotmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xnu-cQ-65m">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="oia-Z5-4hV"/>
@@ -88,7 +88,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp5-8T-Vzn" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tcs-an-hvx">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="testpassword" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tcs-an-hvx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -382,7 +382,7 @@
         <!--Home View Controller-->
         <scene sceneID="OdL-23-PRq">
             <objects>
-                <viewController storyboardIdentifier="homeViewController" id="tKD-tc-VKz" customClass="HomeViewController" customModule="fitness_app_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" modalPresentationStyle="fullScreen" id="tKD-tc-VKz" customClass="HomeViewController" customModule="fitness_app_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yc4-um-5BP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -396,6 +396,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9bo-et-RjL"/>
                     </view>
+                    <connections>
+                        <outlet property="headerView" destination="2VP-73-rhd" id="Ez8-Xy-hxI"/>
+                        <segue destination="MFc-XL-lSj" kind="presentation" identifier="LoginSegue" modalPresentationStyle="fullScreen" id="pQC-zX-EQv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYb-2k-6CS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
