@@ -23,6 +23,24 @@ export class AuthResolver {
     return 'Hello!'
   }
 
+  @Query(_ => UserResponse, { nullable: true })
+  @UseMiddleware(isAuth)
+  async me(@Ctx() { payload }: MyContext): Promise<UserResponse> {
+    if (!payload)
+      return {
+        errors: [
+          {
+            path: 'user id',
+            message: 'No logged in user'
+          }
+        ]
+      }
+
+    const user = await User.findOne(payload.userId)
+
+    return { user }
+  }
+
   @Query(_ => String)
   @UseMiddleware(isAuth)
   async authQuery(@Ctx() { payload }: MyContext): Promise<String> {

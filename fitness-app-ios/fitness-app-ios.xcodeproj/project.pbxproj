@@ -19,6 +19,7 @@
 		2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */; };
 		2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */; };
 		2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2D239D3EF100AF318C /* Montserrat.otf */; };
+		2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B8295BF239EDA3700D3907F /* Logout.graphql */; };
 		2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42D7239D7C1300BA9D4F /* Validator.swift */; };
 		2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2BBA42D9239D996900BA9D4F /* Register.graphql */; };
 		2BBA42DE239D9A7D00BA9D4F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42DD239D9A7D00BA9D4F /* API.swift */; };
@@ -72,6 +73,7 @@
 		2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratBold.otf; sourceTree = "<group>"; };
 		2B4A8D2D239D3EF100AF318C /* Montserrat.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.otf; sourceTree = "<group>"; };
+		2B8295BF239EDA3700D3907F /* Logout.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logout.graphql; sourceTree = "<group>"; };
 		2BBA42D7239D7C1300BA9D4F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		2BBA42D9239D996900BA9D4F /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
 		2BBA42DC239D9A4100BA9D4F /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				2BFF868D239D789100999A86 /* Network.swift */,
 				2BFF8689239D780900999A86 /* Login.graphql */,
 				2BBA42D9239D996900BA9D4F /* Register.graphql */,
+				2B8295BF239EDA3700D3907F /* Logout.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */,
 				2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */,
 				2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */,
+				2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
