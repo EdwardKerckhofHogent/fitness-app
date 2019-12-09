@@ -49,36 +49,36 @@ import { createTokens, sendRefreshToken } from './utils/createTokens'
   })
 
   // Refresh access token
-  app.post('/refresh-token', async (req: Request, res: Response) => {
+  app.use(async (req: any, res: any, next) => {
     const token = req.cookies.fitnessAppApiJid
     if (!token) {
-      return res.send({ success: false, accessToken: '' })
+      return next()
     }
 
-    let payload: any = null
+    let payload: any
     try {
       payload = verify(token, process.env.JWT_REFRESH_TOKEN_SECRET!)
     } catch (error) {
       console.error(error)
-      return res.send({ success: false, accessToken: '' })
+      return next()
     }
 
     // token is valid and we can send back an accessToken
     const user = await User.findOne({ id: payload.userId })
 
     if (!user) {
-      return res.send({ success: false, accessToken: '' })
+      return next()
     }
 
     if (user.tokenVersion !== payload.tokenVersion) {
-      return res.send({ success: false, accessToken: '' })
+      return next()
     }
 
-    const { accessToken, refreshToken } = createTokens(user)
+    const { refreshToken } = createTokens(user)
 
     sendRefreshToken(res, refreshToken)
 
-    return res.send({ success: true, accessToken })
+    next()
   })
 
   app.listen(PORT, () => {

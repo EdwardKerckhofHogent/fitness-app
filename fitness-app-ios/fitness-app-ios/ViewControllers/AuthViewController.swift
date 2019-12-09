@@ -58,12 +58,14 @@ class AuthViewController: UIViewController {
             }
         } else {
             apollo.perform(mutation: LoginMutation(input: UserInput.init(password: loginPasswordTextField.text!, email: loginEmailTextField.text!))) { result in
-                guard let data = try? result.get().data else { return }
-                if ((data.login?.errors?[0]) != nil) {
-                    self.setErrorInLabel(label: 1, error: data.login!.errors![0].message)
+                guard let data = try? result.get().data?.login else { return }
+                if ((data.errors?[0]) != nil) {
+                    self.setErrorInLabel(label: 1, error: data.errors![0].message)
                 } else {
                     // Successful login -> navigate to home and set user to logged in with UserDefaults
+                    print(data.accessToken!)
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                    self.setLoggedIn(value: true)
                 }
             }
         }
@@ -90,6 +92,7 @@ class AuthViewController: UIViewController {
                 } else {
                    // Successful login -> navigate to home and set user to logged in with UserDefaults
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                    self.setLoggedIn(value: true)
                 }
             }
         }
@@ -98,5 +101,10 @@ class AuthViewController: UIViewController {
     func setErrorInLabel(label: Int, error: String) {
         errorLabels[label].alpha = 1
         errorLabels[label].text = error
+    }
+    
+    func setLoggedIn(value: Bool) {
+        UserDefaults.standard.set(value, forKey: "isLoggedIn")
+        UserDefaults.standard.synchronize()
     }
 }

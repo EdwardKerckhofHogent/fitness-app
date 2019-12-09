@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-6v-g7w">
-                                <rect key="frame" x="0.0" y="44" width="414" height="655"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="623.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSI-YH-hDg" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -31,7 +31,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mK1-ka-dff">
-                                        <rect key="frame" x="0.0" y="155" width="414" height="500"/>
+                                        <rect key="frame" x="0.0" y="155" width="414" height="468.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyF-mu-3yt">
                                                 <rect key="frame" x="30" y="8" width="354" height="20"/>
@@ -43,13 +43,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zf-OJ-E0F">
-                                                <rect key="frame" x="30" y="48" width="354" height="62"/>
+                                                <rect key="frame" x="30" y="48" width="354" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="25"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="xSh-9M-qlY">
-                                                <rect key="frame" x="30" y="130" width="354" height="362"/>
+                                                <rect key="frame" x="30" y="98.5" width="354" height="362"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0p-qv-KfK" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
@@ -168,15 +168,12 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="b4m-AA-owM"/>
-                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="30" bottom="8" right="30"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="tiE-En-8mt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="655"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="623.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9x-g3-Oid" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -186,7 +183,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sws-KR-syh">
-                                        <rect key="frame" x="0.0" y="155" width="414" height="500"/>
+                                        <rect key="frame" x="0.0" y="155" width="414" height="468.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDs-d4-grI">
                                                 <rect key="frame" x="30" y="8" width="354" height="20"/>
@@ -198,13 +195,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registreer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-Fw-yko">
-                                                <rect key="frame" x="30" y="48" width="354" height="62"/>
+                                                <rect key="frame" x="30" y="48" width="354" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="25"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="QbL-Sv-IsO">
-                                                <rect key="frame" x="30" y="130" width="354" height="362"/>
+                                                <rect key="frame" x="30" y="98.5" width="354" height="362"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nt-NJ-owv" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
@@ -347,9 +344,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="qzA-IZ-EOM"/>
-                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="30" bottom="8" right="30"/>
                                     </stackView>
                                 </subviews>

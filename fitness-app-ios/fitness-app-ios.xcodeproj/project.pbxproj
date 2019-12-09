@@ -187,7 +187,6 @@
 			children = (
 				2B4A8D29239D3E0D00AF318C /* Header.xib */,
 				2BFF8679239D4E5A00999A86 /* Header.swift */,
-				2BFF867D239D535600999A86 /* ShadowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBA42D7239D7C1300BA9D4F /* Validator.swift */,
+				2BFF867D239D535600999A86 /* ShadowView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
