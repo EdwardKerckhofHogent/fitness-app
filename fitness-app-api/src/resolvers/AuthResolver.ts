@@ -49,7 +49,8 @@ export class AuthResolver {
 
   @Mutation(_ => UserResponse)
   async register(
-    @Arg('input') { email, password, repeatPassword }: UserInput
+    @Arg('input') { email, password, repeatPassword }: UserInput,
+    @Ctx() { res }: MyContext
   ): Promise<UserResponse> {
     const existingUser = await User.findOne({ where: { email } })
 
@@ -82,7 +83,11 @@ export class AuthResolver {
       password: hashedPassword
     }).save()
 
-    return { user }
+    const { refreshToken, accessToken } = createTokens(user)
+
+    sendRefreshToken(res, refreshToken)
+
+    return { user, accessToken }
   }
 
   @Mutation(_ => UserResponse, { nullable: true })

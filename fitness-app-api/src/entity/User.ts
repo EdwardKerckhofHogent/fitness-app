@@ -1,5 +1,5 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
-import { ObjectType, Field, ID } from 'type-graphql'
+import { ObjectType, Field, Int } from 'type-graphql'
 
 /*
     @Field = graphql data
@@ -8,7 +8,7 @@ import { ObjectType, Field, ID } from 'type-graphql'
 @ObjectType()
 @Entity()
 export class User extends BaseEntity {
-  @Field(_ => ID)
+  @Field(_ => Int)
   @PrimaryGeneratedColumn()
   id: number
 
