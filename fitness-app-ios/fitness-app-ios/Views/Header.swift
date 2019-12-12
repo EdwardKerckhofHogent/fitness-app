@@ -15,9 +15,7 @@ class Header: UIView {
         super.init(coder: aDecoder)
         guard let view = loadViewFromNib() else { return }
         
-        let accessToken: String? = Network.getAccessToken()
-        
-        if accessToken != nil {
+        if UserManager.shared.isLoggedIn() {
             logoutButton.isHidden = false
         } else {
             logoutButton.isHidden = true

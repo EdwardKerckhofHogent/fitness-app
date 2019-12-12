@@ -24,10 +24,11 @@ class AuthViewController: UIViewController {
     
     @IBOutlet var errorLabels: [UILabel]!
     
-    let apollo = Network.shared.apollo
+    let auth = Auth()
     let validator = Validator()
     var hideRegister: Bool = true
     var errorMessages: [String] = []
+    var accessToken: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,15 +61,25 @@ class AuthViewController: UIViewController {
                 setErrorInLabel(label: 1, error: error)
             }
         } else {
-            apollo.perform(mutation: LoginMutation(input: UserInput.init(password: loginPasswordTextField.text!, email: loginEmailTextField.text!))) { result in
-                guard let data = try? result.get().data?.login else { return }
-                if ((data.errors?[0]) != nil) {
-                    self.setErrorInLabel(label: 1, error: data.errors![0].message)
-                } else {
-                    // Successful login -> navigate to home and set user to logged in with KeyChainWrapper
+            auth.login(email: loginEmailTextField.text!, password: loginPasswordTextField.text!, completion: { result in
+                switch result {
+                case .success(let accessToken):
+                    self.accessToken = accessToken
+                    
+                    
+                    
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
-                    self.setLoggedIn(accessToken: data.accessToken!, key: "accessToken")
+                case .failure(let error):
+                    self.setErrorInLabel(label: 1, error: error.localizedDescription)
                 }
+            })
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeSegue" {
+            if let destinationVC = segue.destination as? HomeViewController {
+                destinationVC.accessToken = accessToken!
             }
         }
     }
@@ -86,7 +97,7 @@ class AuthViewController: UIViewController {
                 setErrorInLabel(label: 0, error: error)
             }
         } else {
-            apollo.perform(mutation: RegisterMutation(input: UserInput.init(password: registerPasswordTextField.text!, email: registerEmailTextField.text!, repeatPassword: registerRepeatPasswordTextField.text!))) { result in
+            /*apollo.perform(mutation: RegisterMutation(input: UserInput.init(password: registerPasswordTextField.text!, email: registerEmailTextField.text!, repeatPassword: registerRepeatPasswordTextField.text!))) { result in
                 guard let data = try? result.get().data else { return }
                 
                 if ((data.register.errors?[0]) != nil) {
@@ -96,16 +107,12 @@ class AuthViewController: UIViewController {
                     self.performSegue(withIdentifier: "HomeSegue", sender: nil)
                     self.setLoggedIn(accessToken: "fsefe", key: "accessToken")
                 }
-            }
+            }*/
         }
     }
     
     func setErrorInLabel(label: Int, error: String) {
         errorLabels[label].alpha = 1
         errorLabels[label].text = error
-    }
-    
-    func setLoggedIn(accessToken: String, key: String) {
-        KeychainWrapper.standard.set(accessToken, forKey: key)
     }
 }

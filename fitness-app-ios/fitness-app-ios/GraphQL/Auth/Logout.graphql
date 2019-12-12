@@ -1,0 +1,3 @@
+mutation logout($userId: Float!){
+  revokeRefreshToken(userId: $userId)
+}

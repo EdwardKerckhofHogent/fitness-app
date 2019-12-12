@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0C910123A01543003F5A86 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910023A01543003F5A86 /* Auth.swift */; };
+		2B0C910323A01AB0003F5A86 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910223A01AB0003F5A86 /* UserManager.swift */; };
+		2B0C910523A042E2003F5A86 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910423A042E2003F5A86 /* CustomError.swift */; };
+		2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B1DA94D23A17D4D00A904B0 /* Me.graphql */; };
+		2B1DA95123A1808500A904B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1DA95023A1808500A904B0 /* User.swift */; };
 		2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8CEE239D343000AF318C /* AppDelegate.swift */; };
 		2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF0239D343000AF318C /* SceneDelegate.swift */; };
 		2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8CF7239D343100AF318C /* Assets.xcassets */; };
@@ -29,7 +34,7 @@
 		2BFF8684239D770B00999A86 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFF8683239D770B00999A86 /* Apollo */; };
 		2BFF8686239D770B00999A86 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFF8685239D770B00999A86 /* ApolloWebSocket */; };
 		2BFF868A239D780900999A86 /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2BFF8689239D780900999A86 /* Login.graphql */; };
-		2BFF868E239D789100999A86 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF868D239D789100999A86 /* Network.swift */; };
+		2BFF868E239D789100999A86 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF868D239D789100999A86 /* NetworkManager.swift */; };
 		37B61A469044C4FF1D89BA8D /* Pods_fitness_app_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B12ED4C9250DA9EFAC6A2E /* Pods_fitness_app_ios.framework */; };
 		865F489948093717F8D75671 /* Pods_fitness_app_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3DBCDFD9137BDB5FB4B280 /* Pods_fitness_app_iosTests.framework */; };
 		9F80A0C6024668EBF94CB7EF /* Pods_fitness_app_ios_fitness_app_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BADF1FF2507985358924B173 /* Pods_fitness_app_ios_fitness_app_iosUITests.framework */; };
@@ -54,6 +59,11 @@
 
 /* Begin PBXFileReference section */
 		1427B20B277E9D05ACD2E263 /* Pods-fitness-app-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitness-app-ios.release.xcconfig"; path = "Target Support Files/Pods-fitness-app-ios/Pods-fitness-app-ios.release.xcconfig"; sourceTree = "<group>"; };
+		2B0C910023A01543003F5A86 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		2B0C910223A01AB0003F5A86 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		2B0C910423A042E2003F5A86 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		2B1DA94D23A17D4D00A904B0 /* Me.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Me.graphql; sourceTree = "<group>"; };
+		2B1DA95023A1808500A904B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2B3DBCDFD9137BDB5FB4B280 /* Pods_fitness_app_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitness_app_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4A8CEB239D343000AF318C /* fitness-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fitness-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4A8CEE239D343000AF318C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +92,7 @@
 		2BFF867D239D535600999A86 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		2BFF8680239D6E9C00999A86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2BFF8689239D780900999A86 /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
-		2BFF868D239D789100999A86 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		2BFF868D239D789100999A86 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		37C9B16B7AA8012EE4CA322C /* Pods-fitness-app-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitness-app-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-fitness-app-iosTests/Pods-fitness-app-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		89F2F8B964D38D06907D4F44 /* Pods-fitness-app-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitness-app-ios.debug.xcconfig"; path = "Target Support Files/Pods-fitness-app-ios/Pods-fitness-app-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		926E082C45C9F020ED0F3041 /* Pods-fitness-app-ios-fitness-app-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitness-app-ios-fitness-app-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-fitness-app-ios-fitness-app-iosUITests/Pods-fitness-app-ios-fitness-app-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +142,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2B0C90FF23A01501003F5A86 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2B0C910023A01543003F5A86 /* Auth.swift */,
+				2B0C910223A01AB0003F5A86 /* UserManager.swift */,
+				2BFF8689239D780900999A86 /* Login.graphql */,
+				2BBA42D9239D996900BA9D4F /* Register.graphql */,
+				2B8295BF239EDA3700D3907F /* Logout.graphql */,
+				2B1DA94D23A17D4D00A904B0 /* Me.graphql */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2B1DA94F23A1807700A904B0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2B1DA95023A1808500A904B0 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2B4A8CE2239D343000AF318C = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +188,7 @@
 		2B4A8CED239D343000AF318C /* fitness-app-ios */ = {
 			isa = PBXGroup;
 			children = (
+				2B1DA94F23A1807700A904B0 /* Models */,
 				2BBA42D6239D7C0300BA9D4F /* Utils */,
 				2B4A8D28239D3DF500AF318C /* Views */,
 				2B4A8D27239D3D6500AF318C /* GraphQL */,
@@ -203,11 +235,9 @@
 		2B4A8D27239D3D6500AF318C /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				2B0C90FF23A01501003F5A86 /* Auth */,
 				2BBA42DD239D9A7D00BA9D4F /* API.swift */,
-				2BFF868D239D789100999A86 /* Network.swift */,
-				2BFF8689239D780900999A86 /* Login.graphql */,
-				2BBA42D9239D996900BA9D4F /* Register.graphql */,
-				2B8295BF239EDA3700D3907F /* Logout.graphql */,
+				2BFF868D239D789100999A86 /* NetworkManager.swift */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -236,6 +266,7 @@
 			children = (
 				2BBA42D7239D7C1300BA9D4F /* Validator.swift */,
 				2BFF867D239D535600999A86 /* ShadowView.swift */,
+				2B0C910423A042E2003F5A86 /* CustomError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -375,6 +406,7 @@
 				2BFF868A239D780900999A86 /* Login.graphql in Resources */,
 				2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */,
 				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
+				2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,
 				2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */,
 				2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */,
@@ -525,14 +557,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B1DA95123A1808500A904B0 /* User.swift in Sources */,
 				2B4A8D21239D352400AF318C /* AuthViewController.swift in Sources */,
 				2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */,
 				2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */,
-				2BFF868E239D789100999A86 /* Network.swift in Sources */,
+				2BFF868E239D789100999A86 /* NetworkManager.swift in Sources */,
 				2BFF867E239D535600999A86 /* ShadowView.swift in Sources */,
+				2B0C910523A042E2003F5A86 /* CustomError.swift in Sources */,
+				2B0C910123A01543003F5A86 /* Auth.swift in Sources */,
 				2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */,
 				2BFF867A239D4E5A00999A86 /* Header.swift in Sources */,
 				2BBA42DE239D9A7D00BA9D4F /* API.swift in Sources */,
+				2B0C910323A01AB0003F5A86 /* UserManager.swift in Sources */,
 				2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

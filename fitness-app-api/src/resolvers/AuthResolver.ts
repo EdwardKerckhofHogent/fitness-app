@@ -138,6 +138,7 @@ export class AuthResolver {
     sendRefreshToken(res, refreshToken)
 
     return {
+      user,
       accessToken
     }
   }

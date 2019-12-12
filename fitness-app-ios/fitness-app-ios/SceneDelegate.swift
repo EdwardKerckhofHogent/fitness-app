@@ -10,6 +10,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    let auth = Auth()
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -17,15 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let accessToken: String? = Network.getAccessToken()
         
-        if accessToken != nil {
+        if UserManager.shared.isLoggedIn() {
             // Redorect user to home
+            NetworkManager.shared.setApolloClient(accessToken: UserManager.shared.currentAuthToken)
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = mainStoryBoard.instantiateViewController(withIdentifier: "homeViewController")
 
             window.rootViewController = homeVC
         } else {
+            NetworkManager.shared.setApolloClient(accessToken: nil)
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "loginViewController")
 
