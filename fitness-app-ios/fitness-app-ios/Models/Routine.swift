@@ -9,7 +9,6 @@
 import Foundation
 
 struct Routine {
-    var id: Int
     var name: String
     var userId: Int
 }

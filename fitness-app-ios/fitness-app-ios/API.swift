@@ -516,6 +516,7 @@ public final class MeQuery: GraphQLQuery {
           routines {
             __typename
             name
+            userId
           }
         }
         errors {
@@ -666,6 +667,7 @@ public final class MeQuery: GraphQLQuery {
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("userId", type: .nonNull(.scalar(Int.self))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -674,8 +676,8 @@ public final class MeQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(name: String) {
-            self.init(unsafeResultMap: ["__typename": "Routine", "name": name])
+          public init(name: String, userId: Int) {
+            self.init(unsafeResultMap: ["__typename": "Routine", "name": name, "userId": userId])
           }
 
           public var __typename: String {
@@ -693,6 +695,15 @@ public final class MeQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          public var userId: Int {
+            get {
+              return resultMap["userId"]! as! Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "userId")
             }
           }
         }

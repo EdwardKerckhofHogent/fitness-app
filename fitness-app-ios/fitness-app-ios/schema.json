@@ -239,15 +239,15 @@
             "deprecationReason": null
           },
           {
-            "name": "user",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
-                "name": "User",
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               }
             },

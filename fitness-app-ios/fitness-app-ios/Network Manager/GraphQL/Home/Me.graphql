@@ -4,7 +4,6 @@ query me {
       id
       email
       routines {
-        id
         name
         userId
       }
