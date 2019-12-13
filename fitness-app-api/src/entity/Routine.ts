@@ -24,9 +24,10 @@ export class Routine extends BaseEntity {
   @Column({ type: 'varchar', nullable: false })
   name: string
 
-  @Column('int') userId: number
+  @Field(_ => Int)
+  @Column('int')
+  userId: number
 
-  @Field(_ => User)
   @ManyToOne(
     _type => User,
     user => user.routines

@@ -26,7 +26,14 @@ class HomeViewController: UIViewController {
             if ((data.errors?[0]) != nil) {
                 print(data.errors![0].message)
             } else {
-                self.user = User(id: data.user!.id, email: data.user!.email)
+                var userRoutines: [Routine] = []
+                if data.user!.routines != nil {
+                    for routine in data.user!.routines! {
+                        userRoutines.append(routine)
+                    }
+                }
+                
+                //self.user = User(id: data.user!.id, email: data.user!.email, routines: )
                 print(data.user!.email)
             }
         }

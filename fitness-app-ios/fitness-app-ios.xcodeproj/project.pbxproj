@@ -29,6 +29,7 @@
 		2BDC729723A3C93700D3DCED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC729623A3C93700D3DCED /* Constants.swift */; };
 		2BDC729B23A3CA5500D3DCED /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDC729A23A3CA5500D3DCED /* Home.storyboard */; };
 		2BF9285223A3D79900606864 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9285123A3D79900606864 /* API.swift */; };
+		2BF9285523A3EFD300606864 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9285423A3EFD300606864 /* Routine.swift */; };
 		2BFF867A239D4E5A00999A86 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8679239D4E5A00999A86 /* Header.swift */; };
 		2BFF867E239D535600999A86 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF867D239D535600999A86 /* ShadowView.swift */; };
 		2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8680239D6E9C00999A86 /* HomeViewController.swift */; };
@@ -90,6 +91,7 @@
 		2BDC729A23A3CA5500D3DCED /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2BF9285123A3D79900606864 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "fitness-app-ios/API.swift"; sourceTree = SOURCE_ROOT; };
 		2BF9285323A3D7AA00606864 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = schema.json; path = "fitness-app-ios/schema.json"; sourceTree = SOURCE_ROOT; };
+		2BF9285423A3EFD300606864 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		2BFF8679239D4E5A00999A86 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2BFF867D239D535600999A86 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		2BFF8680239D6E9C00999A86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -147,8 +149,8 @@
 		2B1DA94F23A1807700A904B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2BDC729D23A3CE1D00D3DCED /* GraphQL */,
 				2B1DA95023A1808500A904B0 /* User.swift */,
+				2BF9285423A3EFD300606864 /* Routine.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +233,7 @@
 		2BDC729023A3C85600D3DCED /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
+				2BDC729D23A3CE1D00D3DCED /* GraphQL */,
 				2BF9285123A3D79900606864 /* API.swift */,
 				2BF9285323A3D7AA00606864 /* schema.json */,
 				2BFF868D239D789100999A86 /* NetworkManager.swift */,
@@ -609,6 +612,7 @@
 				2BFF867E239D535600999A86 /* ShadowView.swift in Sources */,
 				2B0C910523A042E2003F5A86 /* CustomError.swift in Sources */,
 				2B0C910123A01543003F5A86 /* Auth.swift in Sources */,
+				2BF9285523A3EFD300606864 /* Routine.swift in Sources */,
 				2BF9285223A3D79900606864 /* API.swift in Sources */,
 				2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */,
 				2BFF867A239D4E5A00999A86 /* Header.swift in Sources */,

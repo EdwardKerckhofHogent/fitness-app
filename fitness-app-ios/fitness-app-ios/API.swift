@@ -513,6 +513,10 @@ public final class MeQuery: GraphQLQuery {
           __typename
           id
           email
+          routines {
+            __typename
+            name
+          }
         }
         errors {
           __typename
@@ -607,6 +611,7 @@ public final class MeQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(Int.self))),
           GraphQLField("email", type: .nonNull(.scalar(String.self))),
+          GraphQLField("routines", type: .list(.nonNull(.object(Routine.selections)))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -615,8 +620,8 @@ public final class MeQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: Int, email: String) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id, "email": email])
+        public init(id: Int, email: String, routines: [Routine]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "email": email, "routines": routines.flatMap { (value: [Routine]) -> [ResultMap] in value.map { (value: Routine) -> ResultMap in value.resultMap } }])
         }
 
         public var __typename: String {
@@ -643,6 +648,52 @@ public final class MeQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "email")
+          }
+        }
+
+        public var routines: [Routine]? {
+          get {
+            return (resultMap["routines"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Routine] in value.map { (value: ResultMap) -> Routine in Routine(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Routine]) -> [ResultMap] in value.map { (value: Routine) -> ResultMap in value.resultMap } }, forKey: "routines")
+          }
+        }
+
+        public struct Routine: GraphQLSelectionSet {
+          public static let possibleTypes = ["Routine"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(name: String) {
+            self.init(unsafeResultMap: ["__typename": "Routine", "name": name])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var name: String {
+            get {
+              return resultMap["name"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "name")
+            }
           }
         }
       }

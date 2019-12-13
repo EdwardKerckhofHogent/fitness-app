@@ -3,6 +3,11 @@ query me {
     user {
       id
       email
+      routines {
+        id
+        name
+        userId
+      }
     }
     errors {
       path

@@ -38,7 +38,7 @@ export class AuthResolver {
         ]
       }
 
-    const user = await User.findOne(payload.userId)
+    const user = await User.findOne(payload.userId, { relations: ['routines'] })
 
     return { user }
   }

@@ -19,8 +19,8 @@ import { createTokens, sendRefreshToken } from './utils/createTokens'
   const app: Application = express()
 
   // Read settings from ormconfig
-  const conn = await createDatabseConn()
-  await conn.runMigrations()
+  await createDatabseConn()
+  //await conn.runMigrations()
 
   // Create apollo schema and initialize apolloServer
   const schema = await createSchema()

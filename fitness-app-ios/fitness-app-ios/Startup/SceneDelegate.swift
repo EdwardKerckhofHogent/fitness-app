@@ -18,20 +18,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         
-        if networkManager.isLoggedIn() {
+        /*if networkManager.isLoggedIn() {
             // Redorect user to home
             //networkManager.setApolloClient(accessToken: networkManager.currentAuthToken)
             let mainStoryBoard = UIStoryboard(name: "Home", bundle: nil)
             let homeVC = mainStoryBoard.instantiateViewController(withIdentifier: "homeViewController")
 
             window.rootViewController = homeVC
-        } else {
+        } else {*/
             //networkManager.setApolloClient(accessToken: nil)
             let mainStoryBoard = UIStoryboard(name: "Auth", bundle: nil)
             let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "loginViewController")
 
             window.rootViewController = loginVC
-        }
+        //}
         self.window = window
         window.makeKeyAndVisible()
     }

@@ -45,19 +45,4 @@ class Auth {
             KeychainWrapper.standard.removeObject(forKey: self.userIdKey)
         }
     }
-    
-    func getMe(completion: @escaping(Result<User, Error>) -> Void) {
-        client = NetworkManager.shared.apollo
-        client!.fetch(query: MeQuery()) { result in
-            guard let data = try? result.get().data?.me else {
-                completion(.failure(CustomError(title: "Get Me Query Error", descr: "Server Error: Cannot get me")))
-                return
-            }
-            if ((data.errors?[0]) != nil) {
-                completion(.failure(CustomError(title: "Fetch Error", descr: data.errors![0].message)))
-            } else {
-                completion(.success(User(id: data.user!.id, email: data.user!.email)))
-            }
-        }
-    }
 }
