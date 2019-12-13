@@ -1,5 +1,13 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Entity,
+  Column,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  OneToMany
+} from 'typeorm'
 import { ObjectType, Field, Int } from 'type-graphql'
+
+import { Routine } from './Routine'
 
 /*
     @Field = graphql data
@@ -26,4 +34,11 @@ export class User extends BaseEntity {
   // Change to false when sendEmail is implemented
   @Column('bool')
   confirmed: boolean = true
+
+  @Field(_ => [Routine], { nullable: true })
+  @OneToMany(
+    _type => Routine,
+    routine => routine.user
+  )
+  routines: Routine[]
 }

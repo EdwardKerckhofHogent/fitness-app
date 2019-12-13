@@ -26,6 +26,8 @@ export class AuthResolver {
   @Query(_ => UserResponse, { nullable: true })
   @UseMiddleware(isAuth)
   async me(@Ctx() { payload }: MyContext): Promise<UserResponse> {
+    console.log(payload)
+
     if (!payload)
       return {
         errors: [
