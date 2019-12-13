@@ -8,7 +8,7 @@
 // URL (KeyChain): https://github.com/jrendel/SwiftKeychainWrapper (installed with Cocoapods)
 
 import UIKit
-import SwiftKeychainWrapper
+import Apollo
 
 class AuthViewController: UIViewController {
     @IBOutlet var loginStackView: UIStackView!
@@ -23,8 +23,9 @@ class AuthViewController: UIViewController {
     @IBOutlet var goToLoginButton: UIButton!
     
     @IBOutlet var errorLabels: [UILabel]!
+    @IBOutlet var headerView: Header!
     
-    let auth = Auth()
+    let networkManager = NetworkManager.shared
     let validator = Validator()
     var hideRegister: Bool = true
     var errorMessages: [String] = []
@@ -32,8 +33,8 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateUI()
+        headerView.logoutButton.isHidden = true
     }
     
     @IBAction func switchActionButtonTapped(_ sender: UIButton) {
@@ -61,18 +62,21 @@ class AuthViewController: UIViewController {
                 setErrorInLabel(label: 1, error: error)
             }
         } else {
-            auth.login(email: loginEmailTextField.text!, password: loginPasswordTextField.text!, completion: { result in
-                switch result {
-                case .success(let accessToken):
-                    self.accessToken = accessToken
-                    
-                    
-                    
-                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
-                case .failure(let error):
-                    self.setErrorInLabel(label: 1, error: error.localizedDescription)
+            networkManager.apollo.perform(mutation: LoginMutation(input: UserInput.init(password: loginPasswordTextField.text!, email: loginEmailTextField.text!))) { result in
+                guard let data = try? result.get().data?.login else {
+                    print("SERVER LOGIN ERROR")
+                    self.setErrorInLabel(label: 1, error: "SERVER LOGIN ERROR")
+                    return
                 }
-            })
+                if ((data.errors?[0]) != nil) {
+                    self.setErrorInLabel(label: 1, error: data.errors![0].message)
+                } else {
+                    print("SUCCES")
+                    self.accessToken = data.accessToken!
+                    self.networkManager.logUserIn(accessToken: data.accessToken!)
+                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                }
+            }
         }
     }
     

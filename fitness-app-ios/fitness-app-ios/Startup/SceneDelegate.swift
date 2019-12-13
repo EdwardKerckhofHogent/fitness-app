@@ -9,8 +9,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-    let auth = Auth()
+    let networkManager = NetworkManager.shared
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,16 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         
-        if UserManager.shared.isLoggedIn() {
+        if networkManager.isLoggedIn() {
             // Redorect user to home
-            NetworkManager.shared.setApolloClient(accessToken: UserManager.shared.currentAuthToken)
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            //networkManager.setApolloClient(accessToken: networkManager.currentAuthToken)
+            let mainStoryBoard = UIStoryboard(name: "Home", bundle: nil)
             let homeVC = mainStoryBoard.instantiateViewController(withIdentifier: "homeViewController")
 
             window.rootViewController = homeVC
         } else {
-            NetworkManager.shared.setApolloClient(accessToken: nil)
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            //networkManager.setApolloClient(accessToken: nil)
+            let mainStoryBoard = UIStoryboard(name: "Auth", bundle: nil)
             let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "loginViewController")
 
             window.rootViewController = loginVC

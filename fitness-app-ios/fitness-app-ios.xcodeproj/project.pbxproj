@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B0C910123A01543003F5A86 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910023A01543003F5A86 /* Auth.swift */; };
-		2B0C910323A01AB0003F5A86 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910223A01AB0003F5A86 /* UserManager.swift */; };
 		2B0C910523A042E2003F5A86 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910423A042E2003F5A86 /* CustomError.swift */; };
 		2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B1DA94D23A17D4D00A904B0 /* Me.graphql */; };
 		2B1DA95123A1808500A904B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1DA95023A1808500A904B0 /* User.swift */; };
@@ -19,7 +18,7 @@
 		2B4A8D06239D343100AF318C /* fitness_app_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D05239D343100AF318C /* fitness_app_iosTests.swift */; };
 		2B4A8D11239D343100AF318C /* fitness_app_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D10239D343100AF318C /* fitness_app_iosUITests.swift */; };
 		2B4A8D21239D352400AF318C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8D20239D352400AF318C /* AuthViewController.swift */; };
-		2B4A8D25239D3C1A00AF318C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D24239D3C1A00AF318C /* Main.storyboard */; };
+		2B4A8D25239D3C1A00AF318C /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D24239D3C1A00AF318C /* Auth.storyboard */; };
 		2B4A8D2A239D3E0D00AF318C /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D29239D3E0D00AF318C /* Header.xib */; };
 		2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */; };
 		2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */; };
@@ -27,7 +26,9 @@
 		2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B8295BF239EDA3700D3907F /* Logout.graphql */; };
 		2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42D7239D7C1300BA9D4F /* Validator.swift */; };
 		2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2BBA42D9239D996900BA9D4F /* Register.graphql */; };
-		2BBA42DE239D9A7D00BA9D4F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42DD239D9A7D00BA9D4F /* API.swift */; };
+		2BDC729723A3C93700D3DCED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC729623A3C93700D3DCED /* Constants.swift */; };
+		2BDC729B23A3CA5500D3DCED /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDC729A23A3CA5500D3DCED /* Home.storyboard */; };
+		2BF9285223A3D79900606864 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9285123A3D79900606864 /* API.swift */; };
 		2BFF867A239D4E5A00999A86 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8679239D4E5A00999A86 /* Header.swift */; };
 		2BFF867E239D535600999A86 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF867D239D535600999A86 /* ShadowView.swift */; };
 		2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFF8680239D6E9C00999A86 /* HomeViewController.swift */; };
@@ -60,7 +61,6 @@
 /* Begin PBXFileReference section */
 		1427B20B277E9D05ACD2E263 /* Pods-fitness-app-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitness-app-ios.release.xcconfig"; path = "Target Support Files/Pods-fitness-app-ios/Pods-fitness-app-ios.release.xcconfig"; sourceTree = "<group>"; };
 		2B0C910023A01543003F5A86 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		2B0C910223A01AB0003F5A86 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2B0C910423A042E2003F5A86 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		2B1DA94D23A17D4D00A904B0 /* Me.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Me.graphql; sourceTree = "<group>"; };
 		2B1DA95023A1808500A904B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 		2B4A8D10239D343100AF318C /* fitness_app_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitness_app_iosUITests.swift; sourceTree = "<group>"; };
 		2B4A8D12239D343100AF318C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B4A8D20239D352400AF318C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		2B4A8D24239D3C1A00AF318C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2B4A8D24239D3C1A00AF318C /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		2B4A8D29239D3E0D00AF318C /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
 		2B4A8D2B239D3EF100AF318C /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		2B4A8D2C239D3EF100AF318C /* MontserratBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratBold.otf; sourceTree = "<group>"; };
@@ -86,8 +86,10 @@
 		2B8295BF239EDA3700D3907F /* Logout.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logout.graphql; sourceTree = "<group>"; };
 		2BBA42D7239D7C1300BA9D4F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		2BBA42D9239D996900BA9D4F /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
-		2BBA42DC239D9A4100BA9D4F /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		2BBA42DD239D9A7D00BA9D4F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "fitness-app-ios/API.swift"; sourceTree = SOURCE_ROOT; };
+		2BDC729623A3C93700D3DCED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2BDC729A23A3CA5500D3DCED /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		2BF9285123A3D79900606864 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "fitness-app-ios/API.swift"; sourceTree = SOURCE_ROOT; };
+		2BF9285323A3D7AA00606864 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = schema.json; path = "fitness-app-ios/schema.json"; sourceTree = SOURCE_ROOT; };
 		2BFF8679239D4E5A00999A86 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2BFF867D239D535600999A86 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		2BFF8680239D6E9C00999A86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -142,22 +144,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2B0C90FF23A01501003F5A86 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				2B0C910023A01543003F5A86 /* Auth.swift */,
-				2B0C910223A01AB0003F5A86 /* UserManager.swift */,
-				2BFF8689239D780900999A86 /* Login.graphql */,
-				2BBA42D9239D996900BA9D4F /* Register.graphql */,
-				2B8295BF239EDA3700D3907F /* Logout.graphql */,
-				2B1DA94D23A17D4D00A904B0 /* Me.graphql */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		2B1DA94F23A1807700A904B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2BDC729D23A3CE1D00D3DCED /* GraphQL */,
 				2B1DA95023A1808500A904B0 /* User.swift */,
 			);
 			path = Models;
@@ -188,19 +178,14 @@
 		2B4A8CED239D343000AF318C /* fitness-app-ios */ = {
 			isa = PBXGroup;
 			children = (
+				2BDC729423A3C8D800D3DCED /* Home */,
+				2BDC729523A3C90500D3DCED /* Auth */,
 				2B1DA94F23A1807700A904B0 /* Models */,
-				2BBA42D6239D7C0300BA9D4F /* Utils */,
+				2BDC729023A3C85600D3DCED /* Network Manager */,
 				2B4A8D28239D3DF500AF318C /* Views */,
-				2B4A8D27239D3D6500AF318C /* GraphQL */,
-				2B4A8D26239D3C8E00AF318C /* ViewControllers */,
-				2B4A8CEE239D343000AF318C /* AppDelegate.swift */,
-				2B4A8CF0239D343000AF318C /* SceneDelegate.swift */,
-				2B4A8D24239D3C1A00AF318C /* Main.storyboard */,
-				2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */,
-				2BBA42DC239D9A4100BA9D4F /* schema.json */,
-				2B4A8CFC239D343100AF318C /* Info.plist */,
-				2B4A8D31239D3EF500AF318C /* Assets.Fonts */,
-				2B4A8CF7239D343100AF318C /* Assets.xcassets */,
+				2BDC729123A3C87B00D3DCED /* Resources */,
+				2BDC729223A3C8A100D3DCED /* Startup */,
+				2BDC729323A3C8B700D3DCED /* SupportingFiles */,
 			);
 			path = "fitness-app-ios";
 			sourceTree = "<group>";
@@ -223,30 +208,12 @@
 			path = "fitness-app-iosUITests";
 			sourceTree = "<group>";
 		};
-		2B4A8D26239D3C8E00AF318C /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				2B4A8D20239D352400AF318C /* AuthViewController.swift */,
-				2BFF8680239D6E9C00999A86 /* HomeViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		2B4A8D27239D3D6500AF318C /* GraphQL */ = {
-			isa = PBXGroup;
-			children = (
-				2B0C90FF23A01501003F5A86 /* Auth */,
-				2BBA42DD239D9A7D00BA9D4F /* API.swift */,
-				2BFF868D239D789100999A86 /* NetworkManager.swift */,
-			);
-			path = GraphQL;
-			sourceTree = "<group>";
-		};
 		2B4A8D28239D3DF500AF318C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				2B4A8D29239D3E0D00AF318C /* Header.xib */,
 				2BFF8679239D4E5A00999A86 /* Header.swift */,
+				2BFF867D239D535600999A86 /* ShadowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,14 +228,90 @@
 			path = Assets.Fonts;
 			sourceTree = "<group>";
 		};
-		2BBA42D6239D7C0300BA9D4F /* Utils */ = {
+		2BDC729023A3C85600D3DCED /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
+				2BF9285123A3D79900606864 /* API.swift */,
+				2BF9285323A3D7AA00606864 /* schema.json */,
+				2BFF868D239D789100999A86 /* NetworkManager.swift */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		2BDC729123A3C87B00D3DCED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8D31239D3EF500AF318C /* Assets.Fonts */,
+				2B4A8CF7239D343100AF318C /* Assets.xcassets */,
+				2BDC729623A3C93700D3DCED /* Constants.swift */,
 				2BBA42D7239D7C1300BA9D4F /* Validator.swift */,
-				2BFF867D239D535600999A86 /* ShadowView.swift */,
 				2B0C910423A042E2003F5A86 /* CustomError.swift */,
 			);
-			path = Utils;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2BDC729223A3C8A100D3DCED /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8CEE239D343000AF318C /* AppDelegate.swift */,
+				2B4A8CF0239D343000AF318C /* SceneDelegate.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		2BDC729323A3C8B700D3DCED /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8CFC239D343100AF318C /* Info.plist */,
+				2B4A8CF9239D343100AF318C /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		2BDC729423A3C8D800D3DCED /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2BDC729A23A3CA5500D3DCED /* Home.storyboard */,
+				2BFF8680239D6E9C00999A86 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2BDC729523A3C90500D3DCED /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A8D24239D3C1A00AF318C /* Auth.storyboard */,
+				2B4A8D20239D352400AF318C /* AuthViewController.swift */,
+				2B0C910023A01543003F5A86 /* Auth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2BDC729D23A3CE1D00D3DCED /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				2BDC729F23A3CE3200D3DCED /* Home */,
+				2BDC729E23A3CE2300D3DCED /* Auth */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		2BDC729E23A3CE2300D3DCED /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2BFF8689239D780900999A86 /* Login.graphql */,
+				2BBA42D9239D996900BA9D4F /* Register.graphql */,
+				2B8295BF239EDA3700D3907F /* Logout.graphql */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2BDC729F23A3CE3200D3DCED /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2B1DA94D23A17D4D00A904B0 /* Me.graphql */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		854759A9EBE30E950C413536 /* Pods */ = {
@@ -401,17 +444,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BDC729B23A3CA5500D3DCED /* Home.storyboard in Resources */,
 				2B4A8D2A239D3E0D00AF318C /* Header.xib in Resources */,
-				2B4A8D25239D3C1A00AF318C /* Main.storyboard in Resources */,
+				2B4A8D25239D3C1A00AF318C /* Auth.storyboard in Resources */,
 				2BFF868A239D780900999A86 /* Login.graphql in Resources */,
 				2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */,
-				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
+				2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */,
 				2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */,
+				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,
 				2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */,
 				2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */,
 				2B4A8D2F239D3EF100AF318C /* MontserratBold.otf in Resources */,
-				2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,10 +609,10 @@
 				2BFF867E239D535600999A86 /* ShadowView.swift in Sources */,
 				2B0C910523A042E2003F5A86 /* CustomError.swift in Sources */,
 				2B0C910123A01543003F5A86 /* Auth.swift in Sources */,
+				2BF9285223A3D79900606864 /* API.swift in Sources */,
 				2B4A8CF1239D343000AF318C /* SceneDelegate.swift in Sources */,
 				2BFF867A239D4E5A00999A86 /* Header.swift in Sources */,
-				2BBA42DE239D9A7D00BA9D4F /* API.swift in Sources */,
-				2B0C910323A01AB0003F5A86 /* UserManager.swift in Sources */,
+				2BDC729723A3C93700D3DCED /* Constants.swift in Sources */,
 				2BFF8681239D6E9C00999A86 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,7 +780,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "fitness-app-ios/Info.plist";
+				INFOPLIST_FILE = "fitness-app-ios/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -754,7 +798,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "fitness-app-ios/Info.plist";
+				INFOPLIST_FILE = "fitness-app-ios/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

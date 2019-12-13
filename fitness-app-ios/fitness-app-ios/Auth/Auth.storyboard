@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MFc-XL-lSj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MFc-XL-lSj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -363,6 +363,7 @@
                     <connections>
                         <outlet property="goToLoginButton" destination="M7j-Xs-Zrr" id="Mst-LG-4zi"/>
                         <outlet property="goToRegistrationButton" destination="adm-Ln-LfN" id="I4e-Z6-y2G"/>
+                        <outlet property="headerView" destination="S9x-g3-Oid" id="0Sr-5t-Tj1"/>
                         <outlet property="loginEmailTextField" destination="Xnu-cQ-65m" id="h6l-1C-8oD"/>
                         <outlet property="loginPasswordTextField" destination="Tcs-an-hvx" id="IyZ-Qn-uWV"/>
                         <outlet property="loginStackView" destination="ka2-6v-g7w" id="pJm-FD-ilS"/>
@@ -372,38 +373,20 @@
                         <outlet property="registerStackView" destination="tiE-En-8mt" id="Ulb-yG-bgU"/>
                         <outletCollection property="errorLabels" destination="MDs-d4-grI" collectionClass="NSMutableArray" id="AcZ-8Z-trJ"/>
                         <outletCollection property="errorLabels" destination="tyF-mu-3yt" collectionClass="NSMutableArray" id="OAg-6c-yYp"/>
-                        <segue destination="tKD-tc-VKz" kind="presentation" identifier="HomeSegue" modalPresentationStyle="fullScreen" id="oJo-el-Y3n"/>
+                        <segue destination="LSo-Cd-xKw" kind="presentation" identifier="HomeSegue" modalPresentationStyle="fullScreen" id="8cq-NK-2w4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMJ-b1-RIs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8.6956521739130448" y="143.97321428571428"/>
+            <point key="canvasLocation" x="1" y="127"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="OdL-23-PRq">
+        <!--Home-->
+        <scene sceneID="UbT-Q3-1xq">
             <objects>
-                <viewController storyboardIdentifier="homeViewController" modalPresentationStyle="fullScreen" id="tKD-tc-VKz" customClass="HomeViewController" customModule="fitness_app_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Yc4-um-5BP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VP-73-rhd" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="9bo-et-RjL"/>
-                    </view>
-                    <connections>
-                        <outlet property="headerView" destination="2VP-73-rhd" id="Ez8-Xy-hxI"/>
-                        <segue destination="MFc-XL-lSj" kind="presentation" identifier="LoginSegue" modalPresentationStyle="fullScreen" id="pQC-zX-EQv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pYb-2k-6CS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Home" id="LSo-Cd-xKw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NZ7-pV-Mo6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="769.56521739130437" y="143.97321428571428"/>
+            <point key="canvasLocation" x="838" y="99"/>
         </scene>
     </scenes>
 </document>

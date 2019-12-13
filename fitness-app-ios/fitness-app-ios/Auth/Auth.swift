@@ -15,7 +15,7 @@ class Auth {
     var client: ApolloClient?
     
     func login(email: String, password: String, completion: @escaping(Result<String, Error>) -> Void) {
-        client = NetworkManager.shared.apolloClient
+        client = NetworkManager.shared.apollo
         client!.perform(mutation: LoginMutation(input: UserInput.init(password: password, email: email))) { result in
             guard let data = try? result.get().data?.login else {
                 print("UNRESOLVER")
@@ -33,7 +33,7 @@ class Auth {
     }
 
     func logout(completion: @escaping(Result<Bool, Error>) -> Void) {
-        client = NetworkManager.shared.apolloClient
+        client = NetworkManager.shared.apollo
         client!.perform(mutation: LogoutMutation(userId: KeychainWrapper.standard.double(forKey: userIdKey)!)) { result in
             guard let _ = try? result.get().data else {
                 completion(.failure(CustomError(title: "User Logout Error", descr: "Server Error")))
@@ -47,7 +47,7 @@ class Auth {
     }
     
     func getMe(completion: @escaping(Result<User, Error>) -> Void) {
-        client = NetworkManager.shared.apolloClient
+        client = NetworkManager.shared.apollo
         client!.fetch(query: MeQuery()) { result in
             guard let data = try? result.get().data?.me else {
                 completion(.failure(CustomError(title: "Get Me Query Error", descr: "Server Error: Cannot get me")))
