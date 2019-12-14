@@ -5,6 +5,7 @@ import { isAuth } from '../middleware/IsAuth'
 import { ExerciseInput } from '../graphql-types/exercise/ExerciseInput'
 import { MyContext } from '../graphql-types/MyContext'
 import { Exercise } from '../entity/Exercise'
+import { Routine } from '../entity/Routine'
 
 @Resolver()
 export class ExerciseResolver {
@@ -20,6 +21,17 @@ export class ExerciseResolver {
           {
             path: 'User id',
             message: 'No logged in user'
+          }
+        ]
+      }
+
+    const routine = await Routine.findOne(routineId)
+    if (!routine)
+      return {
+        errors: [
+          {
+            path: 'Routine id',
+            message: `No routine with id: ${routineId} found`
           }
         ]
       }
