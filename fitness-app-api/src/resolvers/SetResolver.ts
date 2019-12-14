@@ -9,6 +9,7 @@ import { Exercise } from '../entity/Exercise'
 
 @Resolver()
 export class SetResolver {
+  // Add new set
   @Mutation(_ => SetResponse)
   @UseMiddleware(isAuth)
   async addSet(

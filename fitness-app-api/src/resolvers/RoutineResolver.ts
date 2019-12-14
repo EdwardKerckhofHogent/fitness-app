@@ -8,6 +8,7 @@ import { Routine } from '../entity/Routine'
 
 @Resolver()
 export class RoutineResolver {
+  // Add new routine
   @Mutation(_ => RoutineResponse)
   @UseMiddleware(isAuth)
   async addRoutine(

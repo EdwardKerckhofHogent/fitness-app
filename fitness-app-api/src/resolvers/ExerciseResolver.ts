@@ -9,6 +9,7 @@ import { Routine } from '../entity/Routine'
 
 @Resolver()
 export class ExerciseResolver {
+  // Add new exercise
   @Mutation(_ => ExerciseResponse)
   @UseMiddleware(isAuth)
   async addExercise(
