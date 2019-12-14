@@ -27,7 +27,6 @@ class AuthViewController: UIViewController {
     
     let networkManager = NetworkManager.shared
     let validator = Validator()
-    let textFieldsPadding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     var hideRegister: Bool = true
     var errorMessages: [String] = []
     var accessToken: String?
@@ -35,7 +34,6 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        headerView.logoutButton.isHidden = true
     }
     
     @IBAction func switchActionButtonTapped(_ sender: UIButton) {
@@ -50,7 +48,8 @@ class AuthViewController: UIViewController {
         loginStackView.isHidden = !hideRegister
         registerStackView.isHidden = hideRegister
         
-        loginEmailTextField.bounds.inset(by: textFieldsPadding)
+        headerView.welcomeText.isHidden = true
+        headerView.logoutButton.isHidden = true
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -117,8 +116,8 @@ class AuthViewController: UIViewController {
     
     func registerLogin(accessToken: String) {
         self.accessToken = accessToken
-        self.networkManager.logUserIn(accessToken: accessToken)
-        self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+        networkManager.logUserIn(accessToken: accessToken)
+        performSegue(withIdentifier: "HomeSegue", sender: nil)
     }
     
     func setErrorInLabel(label: Int, error: String) {

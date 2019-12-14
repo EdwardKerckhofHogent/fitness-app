@@ -30,14 +30,24 @@ class HomeViewController: UIViewController {
                 var userRoutines: [Routine] = []
                 
                 for routine in data.user!.routines ?? [] {
-                    userRoutines.append(Routine(name: routine.name, userId: routine.userId))
+                    userRoutines.append(Routine(name: routine.name))
                 }
                 
                 self.user = User(id: data.user!.id, email: data.user!.email, routines: userRoutines)
+                self.networkManager.loggedInUser = self.user
+                let createRoutineTab = self.tabBarController!.viewControllers![1] as! CreateRoutineViewController
+                createRoutineTab.user = self.user
                 self.updateUI()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let routines = user?.routines else { print("No routines")
+            return
+        }
         
+        print(routines)
     }
     
     func updateUI() {
@@ -66,14 +76,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func logoutButtonTapped(_ sender: UIButton) {
-        print("Logout from home")
-        networkManager.apollo.perform(mutation: LogoutMutation(userId: Double(user!.id))) { result in
-            guard let _ = try? result.get().data else {
-                print("User Logout Error")
-                return
-            }
-            self.networkManager.logUserOut()
-            self.performSegue(withIdentifier: "LogoutSegue", sender: nil)
-        }
+        self.performSegue(withIdentifier: "LogoutSegue", sender: nil)
     }
 }

@@ -1,0 +1,11 @@
+mutation AddRoutine($input: RoutineInput!) {
+    addRoutine(input: $input) {
+        routine {
+            id
+            name
+        }
+        errors {
+            message
+        }
+    }
+}

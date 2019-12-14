@@ -13,18 +13,13 @@ class Header: UIView {
     @IBOutlet var welcomeText: UIStackView!
     @IBOutlet var welcomeName: UILabel!
     
+    var loggedInUser: User?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         guard let view = loadViewFromNib() else { return }
-        /*
-        if NetworkManager.shared.isLoggedIn() {
-            logoutButton.isHidden = false
-            welcomeText.isHidden = false
-        } else {
-            logoutButton.isHidden = true
-            welcomeText.isHidden = true
-        }*/
         
+        loggedInUser = NetworkManager.shared.getLoggedInUser()
         logoutButton.isHidden = true
         welcomeText.isHidden = true
         
@@ -37,4 +32,16 @@ class Header: UIView {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 
+    @objc func logoutButtonTapped(_ sender: UIButton) {
+        NetworkManager.shared.apollo.perform(mutation: LogoutMutation(userId: Double(self.loggedInUser!.id))) { result in
+            guard let _ = try? result.get().data else {
+                print("User Logout Error")
+                return
+            }
+            self.loggedInUser = nil
+            self.logoutButton.isHidden = true
+            self.welcomeText.isHidden = true
+            NetworkManager.shared.logUserOut()
+        }
+    }
 }

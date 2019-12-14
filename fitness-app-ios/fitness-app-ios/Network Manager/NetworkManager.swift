@@ -8,12 +8,13 @@ class NetworkManager {
     
     private(set) lazy var apollo = ApolloClient(url: URL(string: Constants.graphEndpoint)!)
     
+    var loggedInUser: User?
+    
     private init (){
     }
     
     func setApolloClient(accessToken: String?) {
         if let accessToken = accessToken {
-            print("ACCESS TOKEN SET \(accessToken)")
             self.apollo = {
             let authPayloads = ["Authorization": "Bearer \(accessToken)"]
             let configuration = URLSessionConfiguration.default
@@ -21,7 +22,6 @@ class NetworkManager {
             return ApolloClient(networkTransport: HTTPNetworkTransport(url: URL(string: Constants.graphEndpoint)!, session: URLSession.init(configuration: configuration)))
             }()
         } else {
-            print("NO ACCESS TOKEN SET")
             self.apollo = {
                 return ApolloClient(url: URL(string: Constants.graphEndpoint)!)
             }()
@@ -47,5 +47,14 @@ class NetworkManager {
     func logUserOut() {
         KeychainWrapper.standard.removeObject(forKey: Constants.accessTokenKey)
         setApolloClient(accessToken: nil)
+        loggedInUser = nil
+    }
+    
+    func getLoggedInUser() -> User? {
+        if isLoggedIn() {
+            return loggedInUser
+        } else {
+            return nil
+        }
     }
 }

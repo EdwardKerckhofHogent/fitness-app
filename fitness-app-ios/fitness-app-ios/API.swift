@@ -38,6 +38,23 @@ public struct UserInput: GraphQLMapConvertible {
   }
 }
 
+public struct RoutineInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(name: String) {
+    graphQLMap = ["name": name]
+  }
+
+  public var name: String {
+    get {
+      return graphQLMap["name"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "name")
+    }
+  }
+}
+
 public final class LoginMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
@@ -743,6 +760,197 @@ public final class MeQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "path")
+          }
+        }
+
+        public var message: String {
+          get {
+            return resultMap["message"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "message")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class AddRoutineMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation AddRoutine($input: RoutineInput!) {
+      addRoutine(input: $input) {
+        __typename
+        routine {
+          __typename
+          id
+          name
+        }
+        errors {
+          __typename
+          message
+        }
+      }
+    }
+    """
+
+  public let operationName = "AddRoutine"
+
+  public var input: RoutineInput
+
+  public init(input: RoutineInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addRoutine", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.object(AddRoutine.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addRoutine: AddRoutine) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addRoutine": addRoutine.resultMap])
+    }
+
+    public var addRoutine: AddRoutine {
+      get {
+        return AddRoutine(unsafeResultMap: resultMap["addRoutine"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "addRoutine")
+      }
+    }
+
+    public struct AddRoutine: GraphQLSelectionSet {
+      public static let possibleTypes = ["RoutineResponse"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("routine", type: .object(Routine.selections)),
+        GraphQLField("errors", type: .list(.nonNull(.object(Error.selections)))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(routine: Routine? = nil, errors: [Error]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "RoutineResponse", "routine": routine.flatMap { (value: Routine) -> ResultMap in value.resultMap }, "errors": errors.flatMap { (value: [Error]) -> [ResultMap] in value.map { (value: Error) -> ResultMap in value.resultMap } }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var routine: Routine? {
+        get {
+          return (resultMap["routine"] as? ResultMap).flatMap { Routine(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "routine")
+        }
+      }
+
+      public var errors: [Error]? {
+        get {
+          return (resultMap["errors"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Error] in value.map { (value: ResultMap) -> Error in Error(unsafeResultMap: value) } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Error]) -> [ResultMap] in value.map { (value: Error) -> ResultMap in value.resultMap } }, forKey: "errors")
+        }
+      }
+
+      public struct Routine: GraphQLSelectionSet {
+        public static let possibleTypes = ["Routine"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: Int, name: String) {
+          self.init(unsafeResultMap: ["__typename": "Routine", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: Int {
+          get {
+            return resultMap["id"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return resultMap["name"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
+          }
+        }
+      }
+
+      public struct Error: GraphQLSelectionSet {
+        public static let possibleTypes = ["FieldError"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("message", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(message: String) {
+          self.init(unsafeResultMap: ["__typename": "FieldError", "message": message])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
           }
         }
 

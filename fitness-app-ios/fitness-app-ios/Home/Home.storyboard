@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jdl-gC-wQx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1vb-fp-Brb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="XUr-LZ-7uB">
             <objects>
                 <viewController storyboardIdentifier="homeViewController" modalPresentationStyle="fullScreen" id="Jdl-gC-wQx" customClass="HomeViewController" customModule="fitness_app_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,9 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFf-fd-mE2" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFf-fd-mE2" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="115"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="Q4L-5Z-3wq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -28,6 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2qh-RM-dTI"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="play.fill" catalog="system" id="izj-ZD-3Pc"/>
                     <connections>
                         <outlet property="headerView" destination="uFf-fd-mE2" id="G49-UQ-sND"/>
                         <segue destination="fJX-F4-kfw" kind="presentation" identifier="LogoutSegue" modalPresentationStyle="fullScreen" id="2my-j0-EcB"/>
@@ -35,7 +39,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5if-np-28B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26.086956521739133" y="139.95535714285714"/>
+            <point key="canvasLocation" x="888.40579710144937" y="137.27678571428569"/>
+        </scene>
+        <!--CreateRoutine-->
+        <scene sceneID="t10-FX-Z10">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateRoutine" id="kA0-Ph-dJ7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ySe-zK-9pe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ort-Fx-jGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-21" y="565"/>
         </scene>
         <!--Auth-->
         <scene sceneID="bOi-6W-2BR">
@@ -43,7 +57,30 @@
                 <viewControllerPlaceholder storyboardName="Auth" id="fJX-F4-kfw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Dg-5B-ddX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="5"/>
+            <point key="canvasLocation" x="889" y="565"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kue-f5-ib6">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1vb-fp-Brb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8h2-BS-0kc">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Jdl-gC-wQx" kind="relationship" relationship="viewControllers" id="uLE-hc-8rx"/>
+                        <segue destination="kA0-Ph-dJ7" kind="relationship" relationship="viewControllers" id="iF2-oS-wHh"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yV3-2c-miF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-21.739130434782609" y="137.27678571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play.fill" catalog="system" width="58" height="64"/>
+    </resources>
 </document>
