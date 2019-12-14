@@ -10,16 +10,23 @@ import UIKit
 
 class Header: UIView {
     @IBOutlet var logoutButton: UIButton!
+    @IBOutlet var welcomeText: UIStackView!
+    @IBOutlet var welcomeName: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         guard let view = loadViewFromNib() else { return }
-        
+        /*
         if NetworkManager.shared.isLoggedIn() {
             logoutButton.isHidden = false
+            welcomeText.isHidden = false
         } else {
             logoutButton.isHidden = true
-        }
+            welcomeText.isHidden = true
+        }*/
+        
+        logoutButton.isHidden = true
+        welcomeText.isHidden = true
         
         view.frame = self.bounds
         self.addSubview(view)

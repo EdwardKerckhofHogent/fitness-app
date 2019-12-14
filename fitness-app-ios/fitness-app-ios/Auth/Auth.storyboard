@@ -54,21 +54,30 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0p-qv-KfK" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="edward@zonedev.be" borderStyle="roundedRect" placeholder="email@hotmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xnu-cQ-65m">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="edward@zonedev.be" borderStyle="roundedRect" placeholder="email@hotmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xnu-cQ-65m">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="oia-Z5-4hV"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlV-Um-Atn">
+                                                                <rect key="frame" x="8" y="5" width="338" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="Xnu-cQ-65m" secondAttribute="bottom" id="ABi-bj-CXr"/>
                                                             <constraint firstItem="Xnu-cQ-65m" firstAttribute="top" secondItem="A0p-qv-KfK" secondAttribute="top" id="Ftq-4W-ATG"/>
                                                             <constraint firstItem="Xnu-cQ-65m" firstAttribute="leading" secondItem="A0p-qv-KfK" secondAttribute="leading" id="HnZ-QW-55O"/>
+                                                            <constraint firstItem="IlV-Um-Atn" firstAttribute="top" secondItem="A0p-qv-KfK" secondAttribute="top" constant="5" id="oj5-x3-WXA"/>
+                                                            <constraint firstItem="IlV-Um-Atn" firstAttribute="leading" secondItem="A0p-qv-KfK" secondAttribute="leading" constant="8" id="q9F-eL-7wI"/>
                                                             <constraint firstAttribute="trailing" secondItem="Xnu-cQ-65m" secondAttribute="trailing" id="rYT-Ps-1c5"/>
+                                                            <constraint firstAttribute="trailing" secondItem="IlV-Um-Atn" secondAttribute="trailing" constant="8" id="vfA-R2-A7w"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -88,18 +97,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp5-8T-Vzn" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="testpassword" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tcs-an-hvx">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="testpassword" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tcs-an-hvx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vf6-yi-4tY">
+                                                                <rect key="frame" x="8" y="5" width="338" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="Tcs-an-hvx" secondAttribute="bottom" id="0qr-Bb-4dp"/>
                                                             <constraint firstAttribute="trailing" secondItem="Tcs-an-hvx" secondAttribute="trailing" id="Adt-6D-HTO"/>
+                                                            <constraint firstItem="Vf6-yi-4tY" firstAttribute="leading" secondItem="Kp5-8T-Vzn" secondAttribute="leading" constant="8" id="NVO-xx-2yR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Vf6-yi-4tY" secondAttribute="trailing" constant="8" id="VIL-F8-F9j"/>
                                                             <constraint firstItem="Tcs-an-hvx" firstAttribute="top" secondItem="Kp5-8T-Vzn" secondAttribute="top" id="h5O-PC-0Y7"/>
                                                             <constraint firstItem="Tcs-an-hvx" firstAttribute="leading" secondItem="Kp5-8T-Vzn" secondAttribute="leading" id="ozZ-WA-GBS"/>
+                                                            <constraint firstItem="Vf6-yi-4tY" firstAttribute="top" secondItem="Kp5-8T-Vzn" secondAttribute="top" constant="5" id="vrc-Yh-xUK"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -206,7 +224,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nt-NJ-owv" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@hotmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2m-Mh-gPH">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2m-Mh-gPH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="I6L-7Z-7wl"/>
@@ -214,9 +232,18 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orF-XX-8hF">
+                                                                <rect key="frame" x="8" y="5" width="338" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="orF-XX-8hF" secondAttribute="trailing" constant="8" id="Hhf-Eq-2Xr"/>
+                                                            <constraint firstItem="orF-XX-8hF" firstAttribute="top" secondItem="8nt-NJ-owv" secondAttribute="top" constant="5" id="InL-1h-HNX"/>
+                                                            <constraint firstItem="orF-XX-8hF" firstAttribute="leading" secondItem="8nt-NJ-owv" secondAttribute="leading" constant="8" id="cB4-a5-BXt"/>
                                                             <constraint firstItem="v2m-Mh-gPH" firstAttribute="leading" secondItem="8nt-NJ-owv" secondAttribute="leading" id="cf4-kd-mF3"/>
                                                             <constraint firstItem="v2m-Mh-gPH" firstAttribute="top" secondItem="8nt-NJ-owv" secondAttribute="top" id="lAe-GY-lC8"/>
                                                             <constraint firstAttribute="trailing" secondItem="v2m-Mh-gPH" secondAttribute="trailing" id="qfg-mC-nd3"/>
@@ -240,18 +267,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jg0-DP-8s8" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I8m-qj-1MR">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I8m-qj-1MR">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJd-rd-Mhc">
+                                                                <rect key="frame" x="8" y="5" width="338" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstItem="I8m-qj-1MR" firstAttribute="top" secondItem="Jg0-DP-8s8" secondAttribute="top" id="DHp-Zz-gcE"/>
                                                             <constraint firstItem="I8m-qj-1MR" firstAttribute="leading" secondItem="Jg0-DP-8s8" secondAttribute="leading" id="Dga-yr-F5a"/>
                                                             <constraint firstAttribute="bottom" secondItem="I8m-qj-1MR" secondAttribute="bottom" id="KYc-Sg-gwg"/>
+                                                            <constraint firstItem="TJd-rd-Mhc" firstAttribute="leading" secondItem="Jg0-DP-8s8" secondAttribute="leading" constant="8" id="NdP-5Y-K1d"/>
+                                                            <constraint firstAttribute="trailing" secondItem="TJd-rd-Mhc" secondAttribute="trailing" constant="8" id="Q9R-P0-aQI"/>
                                                             <constraint firstAttribute="trailing" secondItem="I8m-qj-1MR" secondAttribute="trailing" id="ZRv-A1-PGh"/>
+                                                            <constraint firstItem="TJd-rd-Mhc" firstAttribute="top" secondItem="Jg0-DP-8s8" secondAttribute="top" constant="5" id="ceu-ze-4Rn"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -271,17 +307,26 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gE-Vz-Tgk" customClass="ShadowView" customModule="fitness_app_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="156" width="354" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="herhaal wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdH-iS-jil">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdH-iS-jil">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herhaal wachtwoord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWL-Gs-V3t">
+                                                                <rect key="frame" x="8" y="5" width="338" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="DWL-Gs-V3t" secondAttribute="trailing" constant="8" id="0n2-L0-hNg"/>
                                                             <constraint firstItem="kdH-iS-jil" firstAttribute="leading" secondItem="3gE-Vz-Tgk" secondAttribute="leading" id="8MU-AA-JcH"/>
                                                             <constraint firstAttribute="trailing" secondItem="kdH-iS-jil" secondAttribute="trailing" id="HVg-qm-ink"/>
                                                             <constraint firstAttribute="bottom" secondItem="kdH-iS-jil" secondAttribute="bottom" id="Ir8-xd-cGp"/>
+                                                            <constraint firstItem="DWL-Gs-V3t" firstAttribute="leading" secondItem="3gE-Vz-Tgk" secondAttribute="leading" constant="8" id="Ylr-kP-bSa"/>
+                                                            <constraint firstItem="DWL-Gs-V3t" firstAttribute="top" secondItem="3gE-Vz-Tgk" secondAttribute="top" constant="5" id="oYO-UU-dMA"/>
                                                             <constraint firstItem="kdH-iS-jil" firstAttribute="top" secondItem="3gE-Vz-Tgk" secondAttribute="top" id="xGa-5r-D8q"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -378,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMJ-b1-RIs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1" y="127"/>
+            <point key="canvasLocation" x="0.0" y="126.5625"/>
         </scene>
         <!--Home-->
         <scene sceneID="UbT-Q3-1xq">

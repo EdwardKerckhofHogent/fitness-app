@@ -27,6 +27,7 @@ class AuthViewController: UIViewController {
     
     let networkManager = NetworkManager.shared
     let validator = Validator()
+    let textFieldsPadding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     var hideRegister: Bool = true
     var errorMessages: [String] = []
     var accessToken: String?
@@ -48,6 +49,8 @@ class AuthViewController: UIViewController {
         }
         loginStackView.isHidden = !hideRegister
         registerStackView.isHidden = hideRegister
+        
+        loginEmailTextField.bounds.inset(by: textFieldsPadding)
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -64,17 +67,13 @@ class AuthViewController: UIViewController {
         } else {
             networkManager.apollo.perform(mutation: LoginMutation(input: UserInput.init(password: loginPasswordTextField.text!, email: loginEmailTextField.text!))) { result in
                 guard let data = try? result.get().data?.login else {
-                    print("SERVER LOGIN ERROR")
                     self.setErrorInLabel(label: 1, error: "SERVER LOGIN ERROR")
                     return
                 }
                 if ((data.errors?[0]) != nil) {
                     self.setErrorInLabel(label: 1, error: data.errors![0].message)
                 } else {
-                    print("SUCCES")
-                    self.accessToken = data.accessToken!
-                    self.networkManager.logUserIn(accessToken: data.accessToken!)
-                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                    self.registerLogin(accessToken: data.accessToken!)
                 }
             }
         }
@@ -91,28 +90,35 @@ class AuthViewController: UIViewController {
     @IBAction func registerButtonTapped(_ sender: Any) {
         errorMessages = []
         
-        let registerEmailValidationResponse =  validator.validate(input: registerEmailTextField, with: [.notEmpty])
-        let registerPasswordValidationResponse = validator.validate(input: registerPasswordTextField, with: [.notEmpty])
-        let registerRepeatPasswordValidationResponse = validator.validate(input: registerRepeatPasswordTextField, with: [.notEmpty])
+        let registerEmailValidationResponse =  validator.validate(input: registerEmailTextField, with: [.notEmpty, .minLength(length: 5)])
+        let registerPasswordValidationResponse = validator.validate(input: registerPasswordTextField, with: [.notEmpty, .minLength(length: 5)])
+        let registerRepeatPasswordValidationResponse = validator.validate(input: registerRepeatPasswordTextField, with: [.notEmpty, .minLength(length: 5)])
         
         if !registerEmailValidationResponse || !registerPasswordValidationResponse || !registerRepeatPasswordValidationResponse {
             errorMessages.append("Form validatie fouten")
             for error in errorMessages {
                 setErrorInLabel(label: 0, error: error)
             }
+        } else if registerRepeatPasswordTextField.text != registerPasswordTextField.text {
+            setErrorInLabel(label: 0, error: "Wachtwoorden niet gelijk")
         } else {
-            /*apollo.perform(mutation: RegisterMutation(input: UserInput.init(password: registerPasswordTextField.text!, email: registerEmailTextField.text!, repeatPassword: registerRepeatPasswordTextField.text!))) { result in
-                guard let data = try? result.get().data else { return }
+            networkManager.apollo.perform(mutation: RegisterMutation(input: UserInput.init(password: registerPasswordTextField.text!, email: registerEmailTextField.text!, repeatPassword: registerRepeatPasswordTextField.text!))) { result in
+                guard let data = try? result.get().data?.register else { return }
                 
-                if ((data.register.errors?[0]) != nil) {
-                    self.setErrorInLabel(label: 0, error: data.register.errors![0].message)
+                if ((data.errors?[0]) != nil) {
+                    self.setErrorInLabel(label: 0, error: data.errors![0].message)
                 } else {
                    // Successful login -> navigate to home and set user to logged in with UserDefaults
-                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
-                    self.setLoggedIn(accessToken: "fsefe", key: "accessToken")
+                    self.registerLogin(accessToken: data.accessToken!)
                 }
-            }*/
+            }
         }
+    }
+    
+    func registerLogin(accessToken: String) {
+        self.accessToken = accessToken
+        self.networkManager.logUserIn(accessToken: accessToken)
+        self.performSegue(withIdentifier: "HomeSegue", sender: nil)
     }
     
     func setErrorInLabel(label: Int, error: String) {

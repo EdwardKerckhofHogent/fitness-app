@@ -15,13 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFf-fd-mE2" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFf-fd-mE2" customClass="Header" customModule="fitness_app_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uFf-fd-mE2" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" id="gY6-IW-vaN"/>
+                            <constraint firstItem="uFf-fd-mE2" firstAttribute="top" secondItem="2qh-RM-dTI" secondAttribute="top" id="jn2-6P-RsO"/>
+                            <constraint firstItem="uFf-fd-mE2" firstAttribute="trailing" secondItem="2qh-RM-dTI" secondAttribute="trailing" id="o7v-1V-XMM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2qh-RM-dTI"/>
                     </view>
                     <connections>
@@ -31,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5if-np-28B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="140"/>
+            <point key="canvasLocation" x="-26.086956521739133" y="139.95535714285714"/>
         </scene>
         <!--Auth-->
         <scene sceneID="bOi-6W-2BR">

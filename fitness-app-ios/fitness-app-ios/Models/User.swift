@@ -12,4 +12,12 @@ struct User {
     var id: Int
     var email: String
     var routines: [Routine]
+    var nickname: String
+    
+    init(id: Int, email: String, routines: [Routine]) {
+        self.id = id
+        self.email = email
+        self.routines = routines
+        self.nickname = String(email.split(separator: "@")[0])
+    }
 }
