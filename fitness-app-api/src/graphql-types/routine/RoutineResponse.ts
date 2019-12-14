@@ -10,9 +10,6 @@ export class RoutineResponse {
   @Field(() => [Routine], { nullable: true })
   routines?: Routine[]
 
-  @Field(() => Number, { nullable: true })
-  id?: number
-
   @Field(() => [FieldError], { nullable: true })
   errors?: FieldError[]
 }
