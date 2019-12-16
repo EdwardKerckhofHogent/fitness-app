@@ -243,6 +243,7 @@
 		2B8D800D23A54F32000DEEEC /* CreateRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				2BF8A1D423A7E03400F899B0 /* AddExercise */,
 				2B8D800E23A54F54000DEEEC /* CreateRoutine.storyboard */,
 				2B8D801023A54F70000DEEEC /* CreateRoutineViewController.swift */,
 			);
@@ -343,6 +344,13 @@
 				2B1DA94D23A17D4D00A904B0 /* Me.graphql */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2BF8A1D423A7E03400F899B0 /* AddExercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddExercise;
 			sourceTree = "<group>";
 		};
 		854759A9EBE30E950C413536 /* Pods */ = {

@@ -9,7 +9,6 @@
 import UIKit
 
 class CreateRoutineViewController: UIViewController {
-    @IBOutlet var headerView: Header!
     @IBOutlet var introTextLabel: UILabel!
     @IBOutlet var saveRoutineButton: UIButton!
     @IBOutlet var routineNameTextField: UITextField!
@@ -23,13 +22,14 @@ class CreateRoutineViewController: UIViewController {
     }
     
     func updateUI() {
+        let colorWord = "workout"
+        let customGreen = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
+        
         // Color word in string
         // URL: https://stackoverflow.com/questions/39665423/how-to-change-colour-of-the-certain-words-in-label-swift-3
         let introString = "Stel een nieuwe workout routine samen!"
-        let colorWord = "workout"
         let range = (introString as NSString).range(of: colorWord)
         let attributedText = NSMutableAttributedString.init(string: introString)
-        let customGreen = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
         attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: customGreen, range: range)
         introTextLabel.attributedText = attributedText
     }
@@ -41,7 +41,6 @@ class CreateRoutineViewController: UIViewController {
             }
         }
     }
-    
     
     @IBAction func saveRoutineButtonTapped(_ sender: UIButton) {
         guard let routineName = routineNameTextField.text else { return }
