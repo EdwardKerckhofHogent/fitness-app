@@ -6,6 +6,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="MontserratBold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="MontserratMedium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home-->
         <scene sceneID="XUr-LZ-7uB">
@@ -22,10 +30,48 @@
                                     <constraint firstAttribute="height" constant="115" id="Q4L-5Z-3wq"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on the menu today?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OwS-2L-Xds">
+                                <rect key="frame" x="30" y="279" width="354" height="61"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPT-zi-ml4">
+                                <rect key="frame" x="30" y="370" width="200" height="38"/>
+                                <color key="backgroundColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Och-pM-LS5"/>
+                                    <constraint firstAttribute="width" constant="200" id="slB-io-6hW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Routines" image="arrow.down" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-BL-7QP">
+                                <rect key="frame" x="30" y="408" width="200" height="367"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="367" id="dQJ-FV-ZUl"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="OwS-2L-Xds" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" constant="30" id="4T2-9n-KLd"/>
+                            <constraint firstItem="vqG-BL-7QP" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" constant="30" id="Eyt-1S-chn"/>
+                            <constraint firstItem="OwS-2L-Xds" firstAttribute="top" secondItem="uFf-fd-mE2" secondAttribute="bottom" constant="120" id="J1q-JT-Kbt"/>
+                            <constraint firstItem="vqG-BL-7QP" firstAttribute="top" secondItem="FPT-zi-ml4" secondAttribute="bottom" id="Nyt-OC-Alq"/>
+                            <constraint firstItem="FPT-zi-ml4" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" constant="30" id="S2d-LR-86V"/>
+                            <constraint firstItem="2qh-RM-dTI" firstAttribute="trailing" secondItem="OwS-2L-Xds" secondAttribute="trailing" constant="30" id="VUb-E4-lc1"/>
+                            <constraint firstItem="FPT-zi-ml4" firstAttribute="top" secondItem="OwS-2L-Xds" secondAttribute="bottom" constant="30" id="bYA-hw-9ho"/>
                             <constraint firstItem="uFf-fd-mE2" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" id="gY6-IW-vaN"/>
+                            <constraint firstItem="2qh-RM-dTI" firstAttribute="trailing" secondItem="vqG-BL-7QP" secondAttribute="trailing" constant="184" id="jQc-sP-0Bg"/>
                             <constraint firstItem="uFf-fd-mE2" firstAttribute="top" secondItem="2qh-RM-dTI" secondAttribute="top" id="jn2-6P-RsO"/>
                             <constraint firstItem="uFf-fd-mE2" firstAttribute="trailing" secondItem="2qh-RM-dTI" secondAttribute="trailing" id="o7v-1V-XMM"/>
                         </constraints>
@@ -34,6 +80,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="play.fill" catalog="system" id="izj-ZD-3Pc"/>
                     <connections>
                         <outlet property="headerView" destination="uFf-fd-mE2" id="G49-UQ-sND"/>
+                        <outlet property="routinesButton" destination="FPT-zi-ml4" id="8sQ-qq-fQl"/>
                         <segue destination="fJX-F4-kfw" kind="presentation" identifier="LogoutSegue" modalPresentationStyle="fullScreen" id="2my-j0-EcB"/>
                     </connections>
                 </viewController>
@@ -82,6 +129,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="play.fill" catalog="system" width="58" height="64"/>
     </resources>
 </document>

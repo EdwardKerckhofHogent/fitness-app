@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet var headerView: Header!
-    var dropDown = DropDownButton()
+    @IBOutlet var routinesButton: UIButton!
     
     let networkManager = NetworkManager.shared
     var accessToken: String = ""
@@ -18,6 +18,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set background image to right
+        // URL: https://stackoverflow.com/questions/7100976/how-do-i-put-the-image-on-the-right-side-of-the-text-in-a-uibutton
+        routinesButton.semanticContentAttribute = UIApplication.shared
+        .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         
         networkManager.apollo.fetch(query: MeQuery()) { result in
             guard let data = try? result.get().data?.me else {
@@ -30,7 +35,7 @@ class HomeViewController: UIViewController {
                 var userRoutines: [Routine] = []
                 
                 for routine in data.user!.routines ?? [] {
-                    userRoutines.append(Routine(name: routine.name))
+                    userRoutines.append(Routine(name: routine.name, exercises: []))
                 }
                 
                 self.user = User(id: data.user!.id, email: data.user!.email, routines: userRoutines)
@@ -55,24 +60,6 @@ class HomeViewController: UIViewController {
         self.headerView.welcomeName.text = self.user!.nickname.capitalizeFirstLetter() + "!"
         self.headerView.logoutButton.isHidden = false
         self.headerView.logoutButton.addTarget(self, action: #selector (self.logoutButtonTapped), for: .touchUpInside)
-        
-        dropDown = DropDownButton.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
-        dropDown.setTitle("Routines", for: .normal)
-        dropDown.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(dropDown)
-        
-        dropDown.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        dropDown.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        dropDown.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        dropDown.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
-        var routineStrings: [String] = []
-        for routine in user?.routines ?? [] {
-            routineStrings.append(routine.name)
-        }
-        
-        dropDown.dropView.dropDownOptions = routineStrings
     }
     
     @objc func logoutButtonTapped(_ sender: UIButton) {

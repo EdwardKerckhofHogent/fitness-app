@@ -532,8 +532,19 @@ public final class MeQuery: GraphQLQuery {
           email
           routines {
             __typename
-            name
             userId
+            name
+            exercises {
+              __typename
+              routineId
+              name
+              sets {
+                __typename
+                exerciseId
+                kg
+                reps
+              }
+            }
           }
         }
         errors {
@@ -683,8 +694,9 @@ public final class MeQuery: GraphQLQuery {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("userId", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("exercises", type: .list(.nonNull(.object(Exercise.selections)))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -693,8 +705,8 @@ public final class MeQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(name: String, userId: Int) {
-            self.init(unsafeResultMap: ["__typename": "Routine", "name": name, "userId": userId])
+          public init(userId: Int, name: String, exercises: [Exercise]? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Routine", "userId": userId, "name": name, "exercises": exercises.flatMap { (value: [Exercise]) -> [ResultMap] in value.map { (value: Exercise) -> ResultMap in value.resultMap } }])
           }
 
           public var __typename: String {
@@ -703,6 +715,15 @@ public final class MeQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var userId: Int {
+            get {
+              return resultMap["userId"]! as! Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "userId")
             }
           }
 
@@ -715,12 +736,126 @@ public final class MeQuery: GraphQLQuery {
             }
           }
 
-          public var userId: Int {
+          public var exercises: [Exercise]? {
             get {
-              return resultMap["userId"]! as! Int
+              return (resultMap["exercises"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Exercise] in value.map { (value: ResultMap) -> Exercise in Exercise(unsafeResultMap: value) } }
             }
             set {
-              resultMap.updateValue(newValue, forKey: "userId")
+              resultMap.updateValue(newValue.flatMap { (value: [Exercise]) -> [ResultMap] in value.map { (value: Exercise) -> ResultMap in value.resultMap } }, forKey: "exercises")
+            }
+          }
+
+          public struct Exercise: GraphQLSelectionSet {
+            public static let possibleTypes = ["Exercise"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("routineId", type: .nonNull(.scalar(Int.self))),
+              GraphQLField("name", type: .nonNull(.scalar(String.self))),
+              GraphQLField("sets", type: .list(.nonNull(.object(Set.selections)))),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(routineId: Int, name: String, sets: [Set]? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Exercise", "routineId": routineId, "name": name, "sets": sets.flatMap { (value: [Set]) -> [ResultMap] in value.map { (value: Set) -> ResultMap in value.resultMap } }])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var routineId: Int {
+              get {
+                return resultMap["routineId"]! as! Int
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "routineId")
+              }
+            }
+
+            public var name: String {
+              get {
+                return resultMap["name"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "name")
+              }
+            }
+
+            public var sets: [Set]? {
+              get {
+                return (resultMap["sets"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Set] in value.map { (value: ResultMap) -> Set in Set(unsafeResultMap: value) } }
+              }
+              set {
+                resultMap.updateValue(newValue.flatMap { (value: [Set]) -> [ResultMap] in value.map { (value: Set) -> ResultMap in value.resultMap } }, forKey: "sets")
+              }
+            }
+
+            public struct Set: GraphQLSelectionSet {
+              public static let possibleTypes = ["ExerciseSet"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("exerciseId", type: .nonNull(.scalar(Int.self))),
+                GraphQLField("kg", type: .nonNull(.scalar(Double.self))),
+                GraphQLField("reps", type: .nonNull(.scalar(Double.self))),
+              ]
+
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public init(exerciseId: Int, kg: Double, reps: Double) {
+                self.init(unsafeResultMap: ["__typename": "ExerciseSet", "exerciseId": exerciseId, "kg": kg, "reps": reps])
+              }
+
+              public var __typename: String {
+                get {
+                  return resultMap["__typename"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              public var exerciseId: Int {
+                get {
+                  return resultMap["exerciseId"]! as! Int
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "exerciseId")
+                }
+              }
+
+              public var kg: Double {
+                get {
+                  return resultMap["kg"]! as! Double
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "kg")
+                }
+              }
+
+              public var reps: Double {
+                get {
+                  return resultMap["reps"]! as! Double
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "reps")
+                }
+              }
             }
           }
         }

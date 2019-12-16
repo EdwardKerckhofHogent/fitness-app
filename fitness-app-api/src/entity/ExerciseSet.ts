@@ -27,7 +27,9 @@ export class ExerciseSet extends BaseEntity {
   @Column({ type: 'smallint', nullable: false })
   reps: number
 
-  @Column('int') exerciseId: number
+  @Field(_ => Int)
+  @Column('int')
+  exerciseId: number
 
   @ManyToOne(
     _type => Exercise,

@@ -26,7 +26,9 @@ export class Exercise extends BaseEntity {
   @Column({ type: 'varchar', nullable: false })
   name: string
 
-  @Column('int') routineId: number
+  @Field(_ => Int)
+  @Column('int')
+  routineId: number
 
   @ManyToOne(
     _type => Routine,

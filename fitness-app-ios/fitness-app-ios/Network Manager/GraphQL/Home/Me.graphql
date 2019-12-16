@@ -4,8 +4,17 @@ query me {
       id
       email
       routines {
-        name
         userId
+        name
+        exercises {
+          routineId
+          name
+          sets {
+            exerciseId
+            kg
+            reps
+          }
+        }
       }
     }
     errors {
