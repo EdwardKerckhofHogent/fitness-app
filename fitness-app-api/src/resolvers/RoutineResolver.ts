@@ -1,4 +1,11 @@
-import { Resolver, Mutation, UseMiddleware, Ctx, Arg } from 'type-graphql'
+import {
+  Resolver,
+  Mutation,
+  UseMiddleware,
+  Ctx,
+  Arg,
+  Query
+} from 'type-graphql'
 
 import { MyContext } from '../graphql-types/MyContext'
 import { isAuth } from '../middleware/IsAuth'
@@ -31,5 +38,26 @@ export class RoutineResolver {
     }).save()
 
     return { routine }
+  }
+
+  @Query(_ => RoutineResponse)
+  @UseMiddleware(isAuth)
+  async getRoutines(@Ctx() { payload }: MyContext): Promise<RoutineResponse> {
+    if (!payload)
+      return {
+        errors: [
+          {
+            path: 'User id',
+            message: 'No logged in user'
+          }
+        ]
+      }
+
+    const routines = await Routine.find({
+      where: { userId: payload.userId },
+      relations: ['exercises', 'exercises.sets']
+    })
+
+    return { routines }
   }
 }
