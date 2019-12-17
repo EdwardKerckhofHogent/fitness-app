@@ -11,13 +11,13 @@ import Foundation
 struct User {
     var id: Int
     var email: String
-    var routines: [Routine]
+    var routines: [MeQuery.Data.Me.User.Routine]
     var nickname: String
     
-    init(id: Int, email: String, routines: [Routine]) {
-        self.id = id
-        self.email = email
-        self.routines = routines
-        self.nickname = String(email.split(separator: "@")[0])
+    init(user: MeQuery.Data.Me.User) {
+        self.id = user.id
+        self.email = user.email
+        self.routines = user.routines ?? []
+        self.nickname = String(user.email.split(separator: "@")[0])
     }
 }

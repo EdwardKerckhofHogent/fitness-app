@@ -11,13 +11,29 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet var headerView: Header!
     @IBOutlet var routinesButton: UIButton!
+    @IBOutlet var routinesTableView: UITableView!
+    @IBOutlet var introTextLabel: UILabel!
     
     let networkManager = NetworkManager.shared
     var accessToken: String = ""
     var user: User?
+    var userRoutineNames: [String] = []
+    
+    lazy var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let colorWord = "menu"
+        let customGreen = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
+        
+        // Color word in string
+        // URL: https://stackoverflow.com/questions/39665423/how-to-change-colour-of-the-certain-words-in-label-swift-3
+        let introString = "What's on the menu today?"
+        let range = (introString as NSString).range(of: colorWord)
+        let attributedText = NSMutableAttributedString.init(string: introString)
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: customGreen, range: range)
+        introTextLabel.attributedText = attributedText
         
         // Set background image to right
         // URL: https://stackoverflow.com/questions/7100976/how-do-i-put-the-image-on-the-right-side-of-the-text-in-a-uibutton
@@ -32,37 +48,81 @@ class HomeViewController: UIViewController {
             if ((data.errors?[0]) != nil) {
                 print(data.errors![0].message)
             } else {
-                var userRoutines: [Routine] = []
-                
-                for routine in data.user!.routines ?? [] {
-                    userRoutines.append(Routine(name: routine.name, exercises: []))
-                }
-                
-                self.user = User(id: data.user!.id, email: data.user!.email, routines: userRoutines)
+                self.user = User(user: data.user!)
                 self.networkManager.loggedInUser = self.user
                 let createRoutineTab = self.tabBarController!.viewControllers![1] as! CreateRoutineViewController
                 createRoutineTab.user = self.user
+                for routine in data.user!.routines ?? [] {
+                    self.userRoutineNames.append(routine.name)
+                }
                 self.updateUI()
+                self.routinesTableView.reloadData()
             }
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        guard let routines = user?.routines else { print("No routines")
-            return
-        }
-        
-        print(routines)
+    @IBAction func routinesButtonTapped(_ sender: Any) {
+        routinesTableView.isHidden = !routinesTableView.isHidden
     }
     
     func updateUI() {
-        self.headerView.welcomeText.isHidden = false
-        self.headerView.welcomeName.text = self.user!.nickname.capitalizeFirstLetter() + "!"
-        self.headerView.logoutButton.isHidden = false
-        self.headerView.logoutButton.addTarget(self, action: #selector (self.logoutButtonTapped), for: .touchUpInside)
+        headerView.welcomeText.isHidden = false
+        headerView.welcomeName.text = self.user!.nickname.capitalizeFirstLetter() + "!"
+        headerView.logoutButton.isHidden = false
+        headerView.logoutButton.addTarget(self, action: #selector (self.logoutButtonTapped), for: .touchUpInside)
+        
+        routinesTableView.isHidden = true
+        routinesTableView.delegate = self
+        routinesTableView.dataSource = self
+        
+        // URL: https://stackoverflow.com/questions/24475792/how-to-use-pull-to-refresh-in-swift
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector (self.refreshTable), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+          routinesTableView.refreshControl = refreshControl
+        } else {
+          routinesTableView.addSubview(refreshControl)
+        }
+    }
+    
+    @objc func refreshTable(sender: AnyObject) {
+        self.routinesTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     @objc func logoutButtonTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: "LogoutSegue", sender: nil)
+    }
+}
+
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userRoutineNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = routinesTableView.dequeueReusableCell(withIdentifier: "RoutineCell") as! HomeRoutineTableViewCell
+        cell.setRoutineName(name: userRoutineNames[indexPath.row])
+        return cell
+    }
+    
+    // Make rows editable
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            userRoutineNames.remove(at: indexPath.row)
+            
+            routinesTableView.beginUpdates()
+            routinesTableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            if userRoutineNames.count == 0 {
+                routinesTableView.isHidden = true
+            }
+            
+            routinesTableView.endUpdates()
+        }
     }
 }

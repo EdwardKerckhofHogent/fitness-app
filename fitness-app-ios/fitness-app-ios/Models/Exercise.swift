@@ -10,10 +10,10 @@ import Foundation
 
 struct Exercise {
     var name: String
-    var sets: [ExerciseSet]
+    var sets: [MeQuery.Data.Me.User.Routine.Exercise.Set]
     
-    init(name: String, sets: [ExerciseSet]) {
-        self.name = name
-        self.sets = sets
+    init(exercise: MeQuery.Data.Me.User.Routine.Exercise) {
+        self.name = exercise.name
+        self.sets = exercise.sets ?? []
     }
 }

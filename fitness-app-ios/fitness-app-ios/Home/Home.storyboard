@@ -47,11 +47,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Routines" image="arrow.down" catalog="system"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="14"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="routinesButtonTapped:" destination="Jdl-gC-wQx" eventType="touchUpInside" id="CZL-s8-ZuT"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-BL-7QP">
                                 <rect key="frame" x="30" y="408" width="200" height="367"/>
@@ -59,6 +57,36 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="367" id="dQJ-FV-ZUl"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutineCell" rowHeight="50" id="vJo-rO-3Yq" customClass="HomeRoutineTableViewCell" customModule="fitness_app_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="200" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJo-rO-3Yq" id="2AM-Jv-ZDR">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rug &amp; Biceps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-zq-bcM">
+                                                    <rect key="frame" x="16" y="18" width="168" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="168" id="VJN-qF-vda"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                                    <color key="textColor" red="0.080700179978709971" green="0.3078159276923077" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ySP-zq-bcM" firstAttribute="bottom" secondItem="2AM-Jv-ZDR" secondAttribute="bottomMargin" id="DdE-XH-bKT"/>
+                                                <constraint firstItem="ySP-zq-bcM" firstAttribute="leading" secondItem="2AM-Jv-ZDR" secondAttribute="leadingMargin" id="J0o-pK-ATe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="routineNameLabel" destination="ySP-zq-bcM" id="bj3-6Z-NMg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -80,7 +108,9 @@
                     <tabBarItem key="tabBarItem" title="Home" image="play.fill" catalog="system" id="izj-ZD-3Pc"/>
                     <connections>
                         <outlet property="headerView" destination="uFf-fd-mE2" id="G49-UQ-sND"/>
+                        <outlet property="introTextLabel" destination="OwS-2L-Xds" id="R2n-Tb-iOK"/>
                         <outlet property="routinesButton" destination="FPT-zi-ml4" id="8sQ-qq-fQl"/>
+                        <outlet property="routinesTableView" destination="vqG-BL-7QP" id="7Cc-P1-MCe"/>
                         <segue destination="fJX-F4-kfw" kind="presentation" identifier="LogoutSegue" modalPresentationStyle="fullScreen" id="2my-j0-EcB"/>
                     </connections>
                 </viewController>

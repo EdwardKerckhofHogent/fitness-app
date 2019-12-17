@@ -10,5 +10,5 @@ import Foundation
 
 struct ExerciseSet {
     var kg: Double
-    var reps: Int
+    var reps: Double
 }
