@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
     let networkManager = NetworkManager.shared
     var accessToken: String = ""
     var user: User?
-    var userRoutineNames: [String] = []
     
     lazy var refreshControl = UIRefreshControl()
     
@@ -40,25 +39,24 @@ class HomeViewController: UIViewController {
         routinesButton.semanticContentAttribute = UIApplication.shared
         .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         
-        networkManager.apollo.fetch(query: MeQuery()) { result in
+        let watcher = networkManager.apollo.watch(query: MeQuery()) { result in
             guard let data = try? result.get().data?.me else {
                 print("Server Error: Cannot get me")
                 return
             }
-            if ((data.errors?[0]) != nil) {
+            if (data.errors?[0] != nil) {
                 print(data.errors![0].message)
             } else {
                 self.user = User(user: data.user!)
                 self.networkManager.loggedInUser = self.user
                 let createRoutineTab = self.tabBarController!.viewControllers![1] as! CreateRoutineViewController
                 createRoutineTab.user = self.user
-                for routine in data.user!.routines ?? [] {
-                    self.userRoutineNames.append(routine.name)
-                }
                 self.updateUI()
                 self.routinesTableView.reloadData()
             }
         }
+        watcher.refetch()
+        print("Called")
     }
     
     @IBAction func routinesButtonTapped(_ sender: Any) {
@@ -74,20 +72,6 @@ class HomeViewController: UIViewController {
         routinesTableView.isHidden = true
         routinesTableView.delegate = self
         routinesTableView.dataSource = self
-        
-        // URL: https://stackoverflow.com/questions/24475792/how-to-use-pull-to-refresh-in-swift
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector (self.refreshTable), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-          routinesTableView.refreshControl = refreshControl
-        } else {
-          routinesTableView.addSubview(refreshControl)
-        }
-    }
-    
-    @objc func refreshTable(sender: AnyObject) {
-        self.routinesTableView.reloadData()
-        refreshControl.endRefreshing()
     }
     
     @objc func logoutButtonTapped(_ sender: UIButton) {
@@ -97,12 +81,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userRoutineNames.count
+        return user!.routines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = routinesTableView.dequeueReusableCell(withIdentifier: "RoutineCell") as! HomeRoutineTableViewCell
-        cell.setRoutineName(name: userRoutineNames[indexPath.row])
+        cell.setRoutineName(name: user!.routines[indexPath.row].name)
         return cell
     }
     
@@ -113,12 +97,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            userRoutineNames.remove(at: indexPath.row)
+            user!.routines.remove(at: indexPath.row)
             
             routinesTableView.beginUpdates()
             routinesTableView.deleteRows(at: [indexPath], with: .automatic)
             
-            if userRoutineNames.count == 0 {
+            if user!.routines.count == 0 {
                 routinesTableView.isHidden = true
             }
             

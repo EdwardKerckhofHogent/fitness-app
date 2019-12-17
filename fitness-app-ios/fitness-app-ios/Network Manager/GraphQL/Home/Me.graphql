@@ -23,3 +23,24 @@ query me {
     }
   }
 }
+
+query getRoutines {
+  getRoutines {
+    routines {
+      name
+      userId
+      exercises {
+        name
+        routineId
+        sets {
+          exerciseId
+          kg
+          reps
+        }
+      }
+    }
+    errors {
+      message
+    }
+  }
+}
