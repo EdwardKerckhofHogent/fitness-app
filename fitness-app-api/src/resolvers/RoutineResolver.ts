@@ -78,6 +78,23 @@ export class RoutineResolver {
     return { routines }
   }
 
+  @Query(_ => RoutineResponse)
+  async getRoutine(@Arg('input') routineId: number): Promise<RoutineResponse> {
+    const routine = await Routine.findOne(routineId)
+
+    if (!routine)
+      return {
+        errors: [
+          {
+            path: 'Routine id',
+            message: `No routine with id: ${routineId} found`
+          }
+        ]
+      }
+
+    return { routine }
+  }
+
   @Mutation(_ => Boolean)
   @UseMiddleware(isAuth)
   async deleteRoutine(@Arg('input') routineId: number): Promise<Boolean> {
