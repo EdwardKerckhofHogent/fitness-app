@@ -27,8 +27,6 @@ class CreateRoutineViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("ja")
-        print(exercises)
         exerciseTableView.reloadData()
     }
     
@@ -36,6 +34,7 @@ class CreateRoutineViewController: UIViewController {
         if segue.identifier == "AddExerciseSegue" {
             if let destinationVC = segue.destination as? AddExerciseViewController {
                 destinationVC.givenExercises = self.exercises
+                destinationVC.routineName = routineNameTextField.text
             }
         }
     }
@@ -64,6 +63,11 @@ class CreateRoutineViewController: UIViewController {
     }
     
     func updateUI() {
+        // set routine name (given from add exercise)
+        if routineName != nil {
+            routineNameTextField.text = routineName
+        }
+        
         // set tableview delegate
         exerciseTableView.delegate = self
         exerciseTableView.dataSource = self

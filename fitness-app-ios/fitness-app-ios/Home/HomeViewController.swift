@@ -13,32 +13,18 @@ class HomeViewController: UIViewController {
     @IBOutlet var routinesButton: UIButton!
     @IBOutlet var routinesTableView: UITableView!
     @IBOutlet var introTextLabel: UILabel!
+    @IBOutlet var continueButton: UIButton!
     
     let networkManager = NetworkManager.shared
     var accessToken: String = ""
     var user: User?
+    var selectedRoutine: Routine?
     
     lazy var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let colorWord = "menu"
-        let customGreen = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
-        
-        // Color word in string
-        // URL: https://stackoverflow.com/questions/39665423/how-to-change-colour-of-the-certain-words-in-label-swift-3
-        let introString = "What's on the menu today?"
-        let range = (introString as NSString).range(of: colorWord)
-        let attributedText = NSMutableAttributedString.init(string: introString)
-        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: customGreen, range: range)
-        introTextLabel.attributedText = attributedText
-        
-        // Set background image to right
-        // URL: https://stackoverflow.com/questions/7100976/how-do-i-put-the-image-on-the-right-side-of-the-text-in-a-uibutton
-        routinesButton.semanticContentAttribute = UIApplication.shared
-        .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
-        
+            
         let watcher = networkManager.apollo.watch(query: MeQuery()) { result in
             guard let data = try? result.get().data?.me else {
                 print("Server Error: Cannot get me")
@@ -65,25 +51,63 @@ class HomeViewController: UIViewController {
                 self.networkManager.loggedInUser = self.user
                 self.updateUI()
                 self.routinesTableView.reloadData()
+                for r in self.user!.routines {
+                    print(r.name)
+                }
             }
         }
         watcher.refetch()
         print("Called")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditSegue" {
+            if let destinationVC = segue.destination as? EditViewController {
+                destinationVC.routine = selectedRoutine!
+            }
+        }
+    }
+    
     @IBAction func routinesButtonTapped(_ sender: Any) {
-        routinesTableView.isHidden = !routinesTableView.isHidden
+        if user!.routines.count > 0 {
+            routinesTableView.isHidden = !routinesTableView.isHidden
+        } else {
+            routinesTableView.isHidden = true
+        }
+       
     }
     
     func updateUI() {
+        // Color word
+        let colorWord = "menu"
+        let customGreen = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
+               
+        // Color word in string
+        // URL: https://stackoverflow.com/questions/39665423/how-to-change-colour-of-the-certain-words-in-label-swift-3
+        let introString = "What's on the menu today?"
+        let range = (introString as NSString).range(of: colorWord)
+        let attributedText = NSMutableAttributedString.init(string: introString)
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: customGreen, range: range)
+        introTextLabel.attributedText = attributedText
+               
+        // Set background image of button to right
+        // URL: https://stackoverflow.com/questions/7100976/how-do-i-put-the-image-on-the-right-side-of-the-text-in-a-uibutton
+        routinesButton.semanticContentAttribute = UIApplication.shared
+               .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
+        
+        // Change header
         headerView.welcomeText.isHidden = false
         headerView.welcomeName.text = self.user!.nickname.capitalizeFirstLetter() + "!"
         headerView.logoutButton.isHidden = false
         headerView.logoutButton.addTarget(self, action: #selector (self.logoutButtonTapped), for: .touchUpInside)
         
+        // Routines table view
         routinesTableView.isHidden = true
         routinesTableView.delegate = self
         routinesTableView.dataSource = self
+        
+        // Hide continue button
+        continueButton.isHidden = true
     }
     
     @objc func logoutButtonTapped(_ sender: UIButton) {
@@ -105,6 +129,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     // Make rows editable
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(user!.routines[indexPath.row].name)
+        selectedRoutine = user!.routines[indexPath.row]
+        routinesButton.setTitle(selectedRoutine!.name, for: .normal)
+        routinesTableView.isHidden = true
+        continueButton.isHidden = false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

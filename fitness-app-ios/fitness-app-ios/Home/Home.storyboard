@@ -51,6 +51,15 @@
                                     <action selector="routinesButtonTapped:" destination="Jdl-gC-wQx" eventType="touchUpInside" id="CZL-s8-ZuT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZF-L7-MbW">
+                                <rect key="frame" x="177" y="658" width="60" height="33"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <color key="tintColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Verder"/>
+                                <connections>
+                                    <segue destination="dDV-sg-zF7" kind="presentation" identifier="EditSegue" modalPresentationStyle="fullScreen" id="n8L-Yq-vzt"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-BL-7QP">
                                 <rect key="frame" x="30" y="408" width="200" height="367"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -94,11 +103,13 @@
                             <constraint firstItem="OwS-2L-Xds" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" constant="30" id="4T2-9n-KLd"/>
                             <constraint firstItem="vqG-BL-7QP" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" constant="30" id="Eyt-1S-chn"/>
                             <constraint firstItem="OwS-2L-Xds" firstAttribute="top" secondItem="uFf-fd-mE2" secondAttribute="bottom" constant="120" id="J1q-JT-Kbt"/>
+                            <constraint firstItem="wZF-L7-MbW" firstAttribute="top" secondItem="FPT-zi-ml4" secondAttribute="bottom" constant="250" id="JY5-j4-59j"/>
                             <constraint firstItem="vqG-BL-7QP" firstAttribute="top" secondItem="FPT-zi-ml4" secondAttribute="bottom" id="Nyt-OC-Alq"/>
                             <constraint firstItem="FPT-zi-ml4" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" constant="30" id="S2d-LR-86V"/>
                             <constraint firstItem="2qh-RM-dTI" firstAttribute="trailing" secondItem="OwS-2L-Xds" secondAttribute="trailing" constant="30" id="VUb-E4-lc1"/>
                             <constraint firstItem="FPT-zi-ml4" firstAttribute="top" secondItem="OwS-2L-Xds" secondAttribute="bottom" constant="30" id="bYA-hw-9ho"/>
                             <constraint firstItem="uFf-fd-mE2" firstAttribute="leading" secondItem="2qh-RM-dTI" secondAttribute="leading" id="gY6-IW-vaN"/>
+                            <constraint firstItem="wZF-L7-MbW" firstAttribute="centerX" secondItem="wI8-yO-DWn" secondAttribute="centerX" id="glN-90-pcV"/>
                             <constraint firstItem="2qh-RM-dTI" firstAttribute="trailing" secondItem="vqG-BL-7QP" secondAttribute="trailing" constant="184" id="jQc-sP-0Bg"/>
                             <constraint firstItem="uFf-fd-mE2" firstAttribute="top" secondItem="2qh-RM-dTI" secondAttribute="top" id="jn2-6P-RsO"/>
                             <constraint firstItem="uFf-fd-mE2" firstAttribute="trailing" secondItem="2qh-RM-dTI" secondAttribute="trailing" id="o7v-1V-XMM"/>
@@ -107,6 +118,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="play.fill" catalog="system" id="izj-ZD-3Pc"/>
                     <connections>
+                        <outlet property="continueButton" destination="wZF-L7-MbW" id="9Qa-x0-i0C"/>
                         <outlet property="headerView" destination="uFf-fd-mE2" id="G49-UQ-sND"/>
                         <outlet property="introTextLabel" destination="OwS-2L-Xds" id="R2n-Tb-iOK"/>
                         <outlet property="routinesButton" destination="FPT-zi-ml4" id="8sQ-qq-fQl"/>
@@ -117,6 +129,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5if-np-28B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="888.40579710144937" y="137.27678571428569"/>
+        </scene>
+        <!--Edit-->
+        <scene sceneID="lkc-17-MCo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Edit" id="dDV-sg-zF7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMj-1A-Isw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448" y="289"/>
         </scene>
         <!--CreateRoutine-->
         <scene sceneID="t10-FX-Z10">

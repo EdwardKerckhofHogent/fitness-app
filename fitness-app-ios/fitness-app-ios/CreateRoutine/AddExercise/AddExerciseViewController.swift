@@ -19,6 +19,7 @@ class AddExerciseViewController: UIViewController {
     
     var exerciseSets: [ExerciseSet] = []
     var givenExercises: [Exercise]?
+    var routineName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class AddExerciseViewController: UIViewController {
         if segue.identifier == "BackToRoutineSegue" {
             if let destinationVC = segue.destination as? CreateRoutineViewController {
                 destinationVC.exercises = givenExercises!
+                destinationVC.routineName = routineName!
             }
         }
     }
@@ -40,12 +42,11 @@ class AddExerciseViewController: UIViewController {
     
     @IBAction func saveExerciseButtonTapped(_ sender: Any) {
         if validateExerciseName() {
-            
             // Get sets
             var userExerciseSets: [ExerciseSet] = []
             for (index, _) in exerciseSets.enumerated() {
                 let cell = setsTableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as! ExerciseSetTableViewCell
-                userExerciseSets.append(ExerciseSet(kg: Double(cell.amountKGTextField.text!)!, reps: Double(cell.amountRepsTextField.text!)!))
+                userExerciseSets.append(ExerciseSet(kg: Double(cell.amountKGTextField.text ?? "0")!, reps: Double(cell.amountRepsTextField.text ?? "0")!))
             }
             let exercise = Exercise(name: exerciseName.text!, sets: userExerciseSets)
             givenExercises?.append(exercise)
@@ -93,37 +94,6 @@ class AddExerciseViewController: UIViewController {
         attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: customGreen, range: range)
         introTextLabel.attributedText = attributedText
     }
-    
-    
-    /*
-    func addNewExercise() {
-        networkManager.apollo.perform(mutation: AddExerciseMutation(input: ExerciseInput.init(name: exerciseName.text!, routineId: Double(routineId!)))) { result in
-            guard let data = try? result.get().data?.addExercise else {
-                print("Server Error: Cannot add exercise")
-                return
-            }
-            if ((data.errors?[0]) != nil) {
-                print(data.errors![0].message)
-            } else {
-                self.oldName = self.exerciseName.text!
-                self.exercise = Exercise(exercise: data.exercise!)
-                self.created = true
-            }
-        }
-    }
-    
-    func deleteOldExercise() {
-        
-    }
-    
-    func addSetToExercise(kg: Double, reps: Double, exerciseId: Int) {
-        networkManager.apollo.perform(mutation: AddSetMutation(input: SetInput.init(kg: kg, reps: reps, exerciseId: Double(exerciseId)))) { result in
-            guard let _ = try? result.get().data?.addSet else {
-                print("Server Error: Cannot add set to exercise")
-                return
-            }
-        }
-    }*/
 }
 
 extension AddExerciseViewController: UITableViewDataSource, UITableViewDelegate {
