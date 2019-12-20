@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
                         }
                         routineExercises.append(Exercise(name: exercise.name, sets: exerciseSets))
                     }
-                    userRoutines.append(Routine(name: routine.name, exercises: routineExercises))
+                    userRoutines.append(Routine(id: routine.id, name: routine.name, exercises: routineExercises))
                 }
                 
                 self.user = User(id: data.user!.id, email: data.user!.email, routines: userRoutines)
@@ -109,7 +109,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //let routine = user!.routines[indexPath.row]
+            let routine = user!.routines[indexPath.row]
             
             user!.routines.remove(at: indexPath.row)
             
@@ -123,13 +123,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             routinesTableView.endUpdates()
             
             // Delete routine from db
-            /*
             networkManager.apollo.perform(mutation: DeleteRoutineMutation(input: Double(routine.id))) { result in
                 guard let _ = try? result.get().data?.deleteRoutine else {
                     print("Server Error: Cannot delete routine")
                     return
                 }
-            }*/
+            }
         }
     }
 }

@@ -104,10 +104,6 @@ class CreateRoutineViewController: UIViewController {
             }
         }
     }
-    
-    func deleteRoutine() {
-        
-    }
 }
 
 extension CreateRoutineViewController: UITableViewDataSource, UITableViewDelegate {

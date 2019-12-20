@@ -9,6 +9,7 @@
 import Foundation
 
 struct Routine {
+    var id: Int
     var name: String
     var exercises: [Exercise]?
 }
