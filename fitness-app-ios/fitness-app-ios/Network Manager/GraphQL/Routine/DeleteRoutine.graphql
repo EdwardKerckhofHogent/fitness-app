@@ -1,0 +1,3 @@
+mutation deleteRoutine($input: Float!) {
+  deleteRoutine(input: $input)
+}

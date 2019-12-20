@@ -19,7 +19,7 @@ class Validator {
     func validate(input: UITextField, with rules: [Rule]) -> Bool {
         guard let message = validate(text: input.text ?? "", with: rules) else { return true }
         if !input.isSecureTextEntry {
-            input.text = message
+            input.placeholder = message
         }
         return false
     }

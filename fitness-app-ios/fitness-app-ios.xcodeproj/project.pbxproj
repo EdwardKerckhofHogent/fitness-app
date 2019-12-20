@@ -27,6 +27,8 @@
 		2B8D801123A54F70000DEEEC /* CreateRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8D801023A54F70000DEEEC /* CreateRoutineViewController.swift */; };
 		2B8D801623A56592000DEEEC /* AddRoutine.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D801523A56592000DEEEC /* AddRoutine.graphql */; };
 		2B8ECF2823A80FB900816EBD /* HomeRoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ECF2723A80FB900816EBD /* HomeRoutineTableViewCell.swift */; };
+		2B9E43C023A9430200AE78F0 /* DeleteRoutine.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B9E43BF23A9430200AE78F0 /* DeleteRoutine.graphql */; };
+		2B9E43C823A9601E00AE78F0 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E43C723A9601E00AE78F0 /* ExerciseTableViewCell.swift */; };
 		2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA42D7239D7C1300BA9D4F /* Validator.swift */; };
 		2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2BBA42D9239D996900BA9D4F /* Register.graphql */; };
 		2BDC729723A3C93700D3DCED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC729623A3C93700D3DCED /* Constants.swift */; };
@@ -96,6 +98,8 @@
 		2B8D801023A54F70000DEEEC /* CreateRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineViewController.swift; sourceTree = "<group>"; };
 		2B8D801523A56592000DEEEC /* AddRoutine.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddRoutine.graphql; sourceTree = "<group>"; };
 		2B8ECF2723A80FB900816EBD /* HomeRoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoutineTableViewCell.swift; sourceTree = "<group>"; };
+		2B9E43BF23A9430200AE78F0 /* DeleteRoutine.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeleteRoutine.graphql; sourceTree = "<group>"; };
+		2B9E43C723A9601E00AE78F0 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		2BBA42D7239D7C1300BA9D4F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		2BBA42D9239D996900BA9D4F /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
 		2BDC729623A3C93700D3DCED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 				2BF8A1DB23A7F11600F899B0 /* AddExercise */,
 				2B8D800E23A54F54000DEEEC /* CreateRoutine.storyboard */,
 				2B8D801023A54F70000DEEEC /* CreateRoutineViewController.swift */,
+				2B9E43C723A9601E00AE78F0 /* ExerciseTableViewCell.swift */,
 			);
 			path = CreateRoutine;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				2B8D801523A56592000DEEEC /* AddRoutine.graphql */,
+				2B9E43BF23A9430200AE78F0 /* DeleteRoutine.graphql */,
 			);
 			path = Routine;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 				2B4A8D25239D3C1A00AF318C /* Auth.storyboard in Resources */,
 				2BFF868A239D780900999A86 /* Login.graphql in Resources */,
 				2BBA42DA239D996A00BA9D4F /* Register.graphql in Resources */,
+				2B9E43C023A9430200AE78F0 /* DeleteRoutine.graphql in Resources */,
 				2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */,
 				2B8D800F23A54F54000DEEEC /* CreateRoutine.storyboard in Resources */,
 				2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */,
@@ -665,6 +672,7 @@
 				2B1DA95123A1808500A904B0 /* User.swift in Sources */,
 				2B4A8D21239D352400AF318C /* AuthViewController.swift in Sources */,
 				2BF9285723A3F73000606864 /* StringExtension.swift in Sources */,
+				2B9E43C823A9601E00AE78F0 /* ExerciseTableViewCell.swift in Sources */,
 				2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */,
 				2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */,
 				2BFF868E239D789100999A86 /* NetworkManager.swift in Sources */,

@@ -1,8 +1,14 @@
 mutation AddRoutine($input: RoutineInput!) {
     addRoutine(input: $input) {
         routine {
-            id
+          name
+          exercises {
             name
+            sets {
+              kg
+              reps
+            }
+          }
         }
         errors {
             message

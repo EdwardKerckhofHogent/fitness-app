@@ -47,10 +47,22 @@ class HomeViewController: UIViewController {
             if (data.errors?[0] != nil) {
                 print(data.errors![0].message)
             } else {
-                self.user = User(user: data.user!)
+                var userRoutines: [Routine] = []
+                var routineExercises: [Exercise] = []
+                var exerciseSets: [ExerciseSet] = []
+                
+                for routine in data.user!.routines ?? [] {
+                    for exercise in routine.exercises ?? [] {
+                        for set in exercise.sets ?? [] {
+                            exerciseSets.append(ExerciseSet(kg: set.kg, reps: set.reps))
+                        }
+                        routineExercises.append(Exercise(name: exercise.name, sets: exerciseSets))
+                    }
+                    userRoutines.append(Routine(name: routine.name, exercises: routineExercises))
+                }
+                
+                self.user = User(id: data.user!.id, email: data.user!.email, routines: userRoutines)
                 self.networkManager.loggedInUser = self.user
-                let createRoutineTab = self.tabBarController!.viewControllers![1] as! CreateRoutineViewController
-                createRoutineTab.user = self.user
                 self.updateUI()
                 self.routinesTableView.reloadData()
             }
@@ -97,6 +109,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            //let routine = user!.routines[indexPath.row]
+            
             user!.routines.remove(at: indexPath.row)
             
             routinesTableView.beginUpdates()
@@ -107,6 +121,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             routinesTableView.endUpdates()
+            
+            // Delete routine from db
+            /*
+            networkManager.apollo.perform(mutation: DeleteRoutineMutation(input: Double(routine.id))) { result in
+                guard let _ = try? result.get().data?.deleteRoutine else {
+                    print("Server Error: Cannot delete routine")
+                    return
+                }
+            }*/
         }
     }
 }

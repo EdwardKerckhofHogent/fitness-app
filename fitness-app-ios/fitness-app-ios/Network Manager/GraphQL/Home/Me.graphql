@@ -4,6 +4,7 @@ query me {
       id
       email
       routines {
+        id
         userId
         name
         exercises {

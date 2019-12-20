@@ -32,14 +32,16 @@ export class Exercise extends BaseEntity {
 
   @ManyToOne(
     _type => Routine,
-    routine => routine.exercises
+    routine => routine.exercises,
+    { onDelete: 'CASCADE' }
   )
   routine: Routine
 
   @Field(_ => [ExerciseSet], { nullable: true })
   @OneToMany(
     _type => ExerciseSet,
-    set => set.exercise
+    set => set.exercise,
+    { onDelete: 'CASCADE' }
   )
   sets: ExerciseSet[]
 }

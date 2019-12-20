@@ -7,7 +7,4 @@ export class SetInput {
 
   @Field()
   reps: number
-
-  @Field()
-  exerciseId: number
 }

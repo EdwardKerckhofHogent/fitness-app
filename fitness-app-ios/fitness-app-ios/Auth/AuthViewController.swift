@@ -55,7 +55,7 @@ class AuthViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         errorMessages = []
         
-        let loginEmailValidationResponse =  validator.validate(input: loginEmailTextField, with: [.notEmpty])
+        let loginEmailValidationResponse = validator.validate(input: loginEmailTextField, with: [.notEmpty])
         let loginPasswordValidationResponse = validator.validate(input: loginPasswordTextField, with: [.notEmpty])
         
         if !loginEmailValidationResponse || !loginPasswordValidationResponse {

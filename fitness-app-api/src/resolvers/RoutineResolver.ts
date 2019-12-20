@@ -12,6 +12,8 @@ import { isAuth } from '../middleware/IsAuth'
 import { RoutineInput } from '../graphql-types/routine/RoutineInput'
 import { RoutineResponse } from '../graphql-types/routine/RoutineResponse'
 import { Routine } from '../entity/Routine'
+import { Exercise } from '../entity/Exercise'
+import { ExerciseSet } from '../entity/ExerciseSet'
 
 @Resolver()
 export class RoutineResolver {
@@ -20,7 +22,7 @@ export class RoutineResolver {
   @UseMiddleware(isAuth)
   async addRoutine(
     @Ctx() { payload }: MyContext,
-    @Arg('input') { name }: RoutineInput
+    @Arg('input') { name, exercises }: RoutineInput
   ): Promise<RoutineResponse> {
     if (!payload)
       return {
@@ -32,10 +34,25 @@ export class RoutineResolver {
         ]
       }
 
-    const routine = await Routine.create({
-      name,
-      userId: payload.userId
-    }).save()
+    const routine = new Routine()
+    routine.name = name
+    routine.userId = payload.userId
+    await routine.save()
+
+    exercises.forEach(async ex => {
+      let exercise = new Exercise()
+      exercise.name = ex.name
+      exercise.routineId = routine.id
+      await exercise.save()
+
+      ex.sets.forEach(async set => {
+        let exerciseSet = new ExerciseSet()
+        exerciseSet.kg = set.kg
+        exerciseSet.reps = set.reps
+        exerciseSet.exerciseId = exercise.id
+        await exerciseSet.save()
+      })
+    })
 
     return { routine }
   }
@@ -59,5 +76,12 @@ export class RoutineResolver {
     })
 
     return { routines }
+  }
+
+  @Mutation(_ => Boolean)
+  @UseMiddleware(isAuth)
+  async deleteRoutine(@Arg('input') routineId: number): Promise<Boolean> {
+    await Routine.delete(routineId)
+    return true
   }
 }

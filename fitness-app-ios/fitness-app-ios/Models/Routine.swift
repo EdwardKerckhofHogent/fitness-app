@@ -10,10 +10,5 @@ import Foundation
 
 struct Routine {
     var name: String
-    var exercises: [MeQuery.Data.Me.User.Routine.Exercise]?
-    
-    init(routine: MeQuery.Data.Me.User.Routine) {
-        self.name = routine.name
-        self.exercises = routine.exercises ?? []
-    }
+    var exercises: [Exercise]?
 }
