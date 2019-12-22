@@ -45,8 +45,11 @@ class CreateRoutineViewController: UIViewController {
     }
     
     @IBAction func saveRoutineButtonTapped(_ sender: UIButton) {
-        if validateRoutineName() {
+        if validateRoutineName() && exercises.count != 0 {
             addNewRoutine()
+        } else if exercises.count == 0{
+            errorLabel.alpha = 1
+            errorLabel.text = "Routine moet 1 oefening hebben!"
         } else {
             errorLabel.alpha = 1
             errorLabel.text = "Routine moet een naam hebben!"

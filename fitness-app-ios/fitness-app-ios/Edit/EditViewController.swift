@@ -11,6 +11,8 @@ import UIKit
 class EditViewController: UIViewController {
     @IBOutlet var routineNameLabel: UILabel!
     @IBOutlet var exercisesTableView: UITableView!
+    @IBOutlet var saveRoutineButton: UIButton!
+    @IBOutlet var startRoutineButton: UIButton!
     
     let networkManager = NetworkManager.shared
     var routine: Routine?
@@ -97,10 +99,21 @@ extension EditViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            dbRoutine!.exercises.remove(at: indexPath.row)
+            dbRoutine!.exercises[indexPath.section].sets.remove(at: indexPath.row)
             
             exercisesTableView.beginUpdates()
             exercisesTableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            if dbRoutine!.exercises[indexPath.section].sets.count == 0 {
+                dbRoutine!.exercises.remove(at: indexPath.section)
+                let indexSet = NSMutableIndexSet()
+                indexSet.add(indexPath.section)
+                exercisesTableView.deleteSections(indexSet as IndexSet, with: .automatic)
+                
+                if dbRoutine!.exercises.count == 0 {
+                    dismiss(animated: true, completion: nil)
+                }
+            }
             
             exercisesTableView.endUpdates()
         }

@@ -10,6 +10,9 @@
         <array key="MontserratBold.otf">
             <string>Montserrat-Bold</string>
         </array>
+        <array key="MontserratMedium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Edit View Controller-->
@@ -43,7 +46,7 @@
                                             <constraint firstAttribute="height" constant="500" id="RFt-9x-Z60"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseSetCell" rowHeight="90" id="8A4-QJ-9Ae" customClass="ExerciseSetTableViewCell" customModule="fitness_app_ios" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExerciseSetCell" rowHeight="90" id="8A4-QJ-9Ae" customClass="ExerciseSetTableViewCell" customModule="fitness_app_ios" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="354" height="90"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8A4-QJ-9Ae" id="23H-1E-2bo">
@@ -134,11 +137,32 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="73" translatesAutoresizingMaskIntoConstraints="NO" id="KbR-Iq-b9C">
+                                <rect key="frame" x="76.5" y="804" width="261" height="33"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQc-l2-doo">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="33"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                        <state key="normal" title="Opslaan">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCi-yw-1DF">
+                                        <rect key="frame" x="145" y="0.0" width="116" height="33"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                        <state key="normal" title="Start Routine">
+                                            <color key="titleColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="KbR-Iq-b9C" firstAttribute="centerX" secondItem="eqD-u8-PPI" secondAttribute="centerX" id="5Ug-j6-L5F"/>
                             <constraint firstItem="wD2-ub-UMI" firstAttribute="trailing" secondItem="gRB-eS-FYh" secondAttribute="trailing" id="AcU-GK-swR"/>
                             <constraint firstItem="gRB-eS-FYh" firstAttribute="trailing" secondItem="wgq-Qb-fod" secondAttribute="trailing" constant="30" id="FUl-oM-Bir"/>
+                            <constraint firstItem="gRB-eS-FYh" firstAttribute="bottom" secondItem="KbR-Iq-b9C" secondAttribute="bottom" constant="25" id="IyL-EU-9z0"/>
                             <constraint firstItem="wD2-ub-UMI" firstAttribute="top" secondItem="gRB-eS-FYh" secondAttribute="top" id="T7z-HJ-4gF"/>
                             <constraint firstItem="wgq-Qb-fod" firstAttribute="leading" secondItem="gRB-eS-FYh" secondAttribute="leading" constant="30" id="WqA-Ai-fRx"/>
                             <constraint firstItem="wgq-Qb-fod" firstAttribute="top" secondItem="wD2-ub-UMI" secondAttribute="bottom" id="ccS-iv-QAH"/>
@@ -149,6 +173,8 @@
                     <connections>
                         <outlet property="exercisesTableView" destination="anX-dP-Wjf" id="bJf-3g-FB6"/>
                         <outlet property="routineNameLabel" destination="Fpj-2R-tlm" id="XyQ-Z7-O7g"/>
+                        <outlet property="saveRoutineButton" destination="yQc-l2-doo" id="i59-wq-J50"/>
+                        <outlet property="startRoutineButton" destination="gCi-yw-1DF" id="ZCX-7P-Te4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krr-xA-XKM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
