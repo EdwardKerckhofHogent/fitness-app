@@ -46,7 +46,11 @@ class AddExerciseViewController: UIViewController {
             var userExerciseSets: [ExerciseSet] = []
             for (index, _) in exerciseSets.enumerated() {
                 let cell = setsTableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as! ExerciseSetTableViewCell
-                userExerciseSets.append(ExerciseSet(kg: Double(cell.amountKGTextField.text ?? "0")!, reps: Double(cell.amountRepsTextField.text ?? "0")!))
+                
+                let kg = cell.amountKGTextField.text == "" ? "0" : cell.amountKGTextField.text
+                let reps = cell.amountRepsTextField.text == "" ? "0" : cell.amountRepsTextField.text
+                
+                userExerciseSets.append(ExerciseSet(kg: Double(kg!)!, reps: Double(reps!)!))
             }
             let exercise = Exercise(name: exerciseName.text!, sets: userExerciseSets)
             givenExercises?.append(exercise)

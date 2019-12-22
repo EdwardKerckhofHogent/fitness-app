@@ -57,7 +57,7 @@
                                 <color key="tintColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Verder"/>
                                 <connections>
-                                    <segue destination="dDV-sg-zF7" kind="presentation" identifier="EditSegue" modalPresentationStyle="fullScreen" id="n8L-Yq-vzt"/>
+                                    <segue destination="dDV-sg-zF7" kind="presentation" identifier="EditSegue" modalPresentationStyle="automatic" id="n8L-Yq-vzt"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-BL-7QP">
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="367" id="dQJ-FV-ZUl"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutineCell" rowHeight="50" id="vJo-rO-3Yq" customClass="HomeRoutineTableViewCell" customModule="fitness_app_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RoutineCell" rowHeight="50" id="vJo-rO-3Yq" customClass="HomeRoutineTableViewCell" customModule="fitness_app_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="200" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJo-rO-3Yq" id="2AM-Jv-ZDR">

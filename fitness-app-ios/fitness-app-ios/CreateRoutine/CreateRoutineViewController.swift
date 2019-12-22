@@ -94,6 +94,7 @@ class CreateRoutineViewController: UIViewController {
                 exerciseSetInputs.append(SetInput.init(kg: set.kg, reps: set.reps))
             }
             exerciseInputs.append(ExerciseInput.init(name: exercise.name, sets: exerciseSetInputs))
+            exerciseSetInputs = []
         }
         
         networkManager.apollo.perform(mutation: AddRoutineMutation(input: RoutineInput.init(name: routineNameTextField.text!, exercises: exerciseInputs))) { result in

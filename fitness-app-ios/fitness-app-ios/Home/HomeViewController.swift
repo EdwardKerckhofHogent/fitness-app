@@ -51,21 +51,18 @@ class HomeViewController: UIViewController {
                 self.networkManager.loggedInUser = self.user
                 self.updateUI()
                 self.routinesTableView.reloadData()
-                for r in self.user!.routines {
-                    print(r.name)
-                }
             }
         }
         watcher.refetch()
-        print("Called")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             if let destinationVC = segue.destination as? EditViewController {
-                destinationVC.routine = selectedRoutine!
+                destinationVC.routine = self.selectedRoutine
             }
         }
+        
     }
     
     @IBAction func routinesButtonTapped(_ sender: Any) {

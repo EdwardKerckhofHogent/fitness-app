@@ -24,6 +24,7 @@
 		2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A8D2D239D3EF100AF318C /* Montserrat.otf */; };
 		2B6CD36D23AD43850087DDAC /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6CD36C23AD43850087DDAC /* Edit.storyboard */; };
 		2B6CD36F23AD43970087DDAC /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CD36E23AD43970087DDAC /* EditViewController.swift */; };
+		2B6CD37123AD52CB0087DDAC /* GetRoutine.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B6CD37023AD52CB0087DDAC /* GetRoutine.graphql */; };
 		2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B8295BF239EDA3700D3907F /* Logout.graphql */; };
 		2B8D800F23A54F54000DEEEC /* CreateRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D800E23A54F54000DEEEC /* CreateRoutine.storyboard */; };
 		2B8D801123A54F70000DEEEC /* CreateRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8D801023A54F70000DEEEC /* CreateRoutineViewController.swift */; };
@@ -97,6 +98,7 @@
 		2B4A8D2D239D3EF100AF318C /* Montserrat.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.otf; sourceTree = "<group>"; };
 		2B6CD36C23AD43850087DDAC /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		2B6CD36E23AD43970087DDAC /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		2B6CD37023AD52CB0087DDAC /* GetRoutine.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetRoutine.graphql; sourceTree = "<group>"; };
 		2B8295BF239EDA3700D3907F /* Logout.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logout.graphql; sourceTree = "<group>"; };
 		2B8D800E23A54F54000DEEEC /* CreateRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateRoutine.storyboard; sourceTree = "<group>"; };
 		2B8D801023A54F70000DEEEC /* CreateRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineViewController.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				2B8D801523A56592000DEEEC /* AddRoutine.graphql */,
 				2B9E43BF23A9430200AE78F0 /* DeleteRoutine.graphql */,
+				2B6CD37023AD52CB0087DDAC /* GetRoutine.graphql */,
 			);
 			path = Routine;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				2B9E43C023A9430200AE78F0 /* DeleteRoutine.graphql in Resources */,
 				2B8295C0239EDA3700D3907F /* Logout.graphql in Resources */,
 				2B8D800F23A54F54000DEEEC /* CreateRoutine.storyboard in Resources */,
+				2B6CD37123AD52CB0087DDAC /* GetRoutine.graphql in Resources */,
 				2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */,
 				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,

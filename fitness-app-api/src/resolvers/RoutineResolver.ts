@@ -80,7 +80,9 @@ export class RoutineResolver {
 
   @Query(_ => RoutineResponse)
   async getRoutine(@Arg('input') routineId: number): Promise<RoutineResponse> {
-    const routine = await Routine.findOne(routineId)
+    const routine = await Routine.findOne(routineId, {
+      relations: ['exercises', 'exercises.sets']
+    })
 
     if (!routine)
       return {

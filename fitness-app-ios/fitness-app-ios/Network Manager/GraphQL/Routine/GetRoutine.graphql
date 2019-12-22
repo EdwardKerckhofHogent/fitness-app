@@ -1,0 +1,18 @@
+query getRoutineById($input: Float!) {
+  getRoutine(input: $input) {
+    routine {
+      id
+      name
+      exercises {
+        name
+        sets {
+          kg
+          reps
+        }
+      }
+    }
+    errors {
+      message
+    }
+  }
+}

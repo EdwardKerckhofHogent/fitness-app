@@ -1643,3 +1643,307 @@ public final class DeleteRoutineMutation: GraphQLMutation {
     }
   }
 }
+
+public final class GetRoutineByIdQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    query getRoutineById($input: Float!) {
+      getRoutine(input: $input) {
+        __typename
+        routine {
+          __typename
+          id
+          name
+          exercises {
+            __typename
+            name
+            sets {
+              __typename
+              kg
+              reps
+            }
+          }
+        }
+        errors {
+          __typename
+          message
+        }
+      }
+    }
+    """
+
+  public let operationName = "getRoutineById"
+
+  public var input: Double
+
+  public init(input: Double) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("getRoutine", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.object(GetRoutine.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(getRoutine: GetRoutine) {
+      self.init(unsafeResultMap: ["__typename": "Query", "getRoutine": getRoutine.resultMap])
+    }
+
+    public var getRoutine: GetRoutine {
+      get {
+        return GetRoutine(unsafeResultMap: resultMap["getRoutine"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "getRoutine")
+      }
+    }
+
+    public struct GetRoutine: GraphQLSelectionSet {
+      public static let possibleTypes = ["RoutineResponse"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("routine", type: .object(Routine.selections)),
+        GraphQLField("errors", type: .list(.nonNull(.object(Error.selections)))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(routine: Routine? = nil, errors: [Error]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "RoutineResponse", "routine": routine.flatMap { (value: Routine) -> ResultMap in value.resultMap }, "errors": errors.flatMap { (value: [Error]) -> [ResultMap] in value.map { (value: Error) -> ResultMap in value.resultMap } }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var routine: Routine? {
+        get {
+          return (resultMap["routine"] as? ResultMap).flatMap { Routine(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "routine")
+        }
+      }
+
+      public var errors: [Error]? {
+        get {
+          return (resultMap["errors"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Error] in value.map { (value: ResultMap) -> Error in Error(unsafeResultMap: value) } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Error]) -> [ResultMap] in value.map { (value: Error) -> ResultMap in value.resultMap } }, forKey: "errors")
+        }
+      }
+
+      public struct Routine: GraphQLSelectionSet {
+        public static let possibleTypes = ["Routine"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("exercises", type: .list(.nonNull(.object(Exercise.selections)))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: Int, name: String, exercises: [Exercise]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Routine", "id": id, "name": name, "exercises": exercises.flatMap { (value: [Exercise]) -> [ResultMap] in value.map { (value: Exercise) -> ResultMap in value.resultMap } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: Int {
+          get {
+            return resultMap["id"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return resultMap["name"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var exercises: [Exercise]? {
+          get {
+            return (resultMap["exercises"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Exercise] in value.map { (value: ResultMap) -> Exercise in Exercise(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Exercise]) -> [ResultMap] in value.map { (value: Exercise) -> ResultMap in value.resultMap } }, forKey: "exercises")
+          }
+        }
+
+        public struct Exercise: GraphQLSelectionSet {
+          public static let possibleTypes = ["Exercise"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("sets", type: .list(.nonNull(.object(Set.selections)))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(name: String, sets: [Set]? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Exercise", "name": name, "sets": sets.flatMap { (value: [Set]) -> [ResultMap] in value.map { (value: Set) -> ResultMap in value.resultMap } }])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var name: String {
+            get {
+              return resultMap["name"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          public var sets: [Set]? {
+            get {
+              return (resultMap["sets"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Set] in value.map { (value: ResultMap) -> Set in Set(unsafeResultMap: value) } }
+            }
+            set {
+              resultMap.updateValue(newValue.flatMap { (value: [Set]) -> [ResultMap] in value.map { (value: Set) -> ResultMap in value.resultMap } }, forKey: "sets")
+            }
+          }
+
+          public struct Set: GraphQLSelectionSet {
+            public static let possibleTypes = ["ExerciseSet"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("kg", type: .nonNull(.scalar(Double.self))),
+              GraphQLField("reps", type: .nonNull(.scalar(Double.self))),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(kg: Double, reps: Double) {
+              self.init(unsafeResultMap: ["__typename": "ExerciseSet", "kg": kg, "reps": reps])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var kg: Double {
+              get {
+                return resultMap["kg"]! as! Double
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "kg")
+              }
+            }
+
+            public var reps: Double {
+              get {
+                return resultMap["reps"]! as! Double
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "reps")
+              }
+            }
+          }
+        }
+      }
+
+      public struct Error: GraphQLSelectionSet {
+        public static let possibleTypes = ["FieldError"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("message", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(message: String) {
+          self.init(unsafeResultMap: ["__typename": "FieldError", "message": message])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var message: String {
+          get {
+            return resultMap["message"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "message")
+          }
+        }
+      }
+    }
+  }
+}

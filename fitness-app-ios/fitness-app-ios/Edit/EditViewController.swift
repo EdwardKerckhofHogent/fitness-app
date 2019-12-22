@@ -12,16 +12,39 @@ class EditViewController: UIViewController {
     @IBOutlet var routineNameLabel: UILabel!
     @IBOutlet var exercisesTableView: UITableView!
     
+    let networkManager = NetworkManager.shared
     var routine: Routine?
+    var dbRoutine: Routine?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for ex in routine!.exercises {
-            print(ex.name)
-        }
+        print(routine!.id)
         
         // Get routine by id from db
+        networkManager.apollo.fetch(query: GetRoutineByIdQuery(input: Double(routine!.id))) { result in
+            guard let data = try? result.get().data?.getRoutine else {
+                print("Server Error: Cannot get routine")
+                return
+            }
+            
+            if data.errors?[0] != nil {
+                print(data.errors![0].message)
+            } else {
+                var routineExercises: [Exercise] = []
+                var exerciseSets: [ExerciseSet] = []
+                for exercise in data.routine!.exercises! {
+                    for set in exercise.sets! {
+                        exerciseSets.append(ExerciseSet(kg: set.kg, reps: set.reps))
+                    }
+                    routineExercises.append(Exercise(name: exercise.name, sets: exerciseSets))
+                    exerciseSets = []
+                }
+                
+                self.dbRoutine = Routine(id: data.routine!.id, name: data.routine!.name, exercises: routineExercises)
+                self.exercisesTableView.reloadData()
+            }
+        }
         
         routineNameLabel.text = routine!.name
         
@@ -33,7 +56,7 @@ class EditViewController: UIViewController {
 
 extension EditViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routine!.exercises[section].sets.count
+        return dbRoutine!.exercises[section].sets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,18 +64,14 @@ extension EditViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.cellTitle.text = "Set: \(indexPath.row + 1)"
         
-        let exerciseCount = routine!.exercises.count
-        var i = 0
-        for set in routine!.exercises[i].sets {
-            cell.amountKGTextField.text = String(set.kg)
-            cell.amountRepsTextField.text = String(set.reps)
-            
-            if i < exerciseCount {
-                i += 1
-            }
+        var sets: [ExerciseSet] = []
+        
+        for set in dbRoutine!.exercises[indexPath.section].sets {
+            sets.append(ExerciseSet(kg: set.kg, reps: set.reps))
         }
         
-        
+        cell.amountKGTextField.text = "\(sets[indexPath.row].kg)"
+        cell.amountRepsTextField.text = "\(sets[indexPath.row].reps)"
         
         return cell
     }
@@ -63,12 +82,12 @@ extension EditViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return routine!.exercises.count
+        return dbRoutine?.exercises.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = routine!.exercises[section].name
+        label.text = dbRoutine!.exercises[section].name
         label.font = UIFont(name: "Montserrat", size: 18)
         label.backgroundColor = UIColor.white
         label.textColor = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
@@ -78,7 +97,7 @@ extension EditViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            routine!.exercises.remove(at: indexPath.row)
+            dbRoutine!.exercises.remove(at: indexPath.row)
             
             exercisesTableView.beginUpdates()
             exercisesTableView.deleteRows(at: [indexPath], with: .automatic)
