@@ -3,6 +3,9 @@ import { ExerciseInput } from '../exercise/ExerciseInput'
 
 @InputType()
 export class RoutineInput {
+  @Field({ nullable: true })
+  id?: number
+
   @Field()
   name: string
 

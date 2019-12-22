@@ -34,7 +34,7 @@ export class ExerciseSet extends BaseEntity {
   @ManyToOne(
     _type => Exercise,
     exercise => exercise.sets,
-    { onDelete: 'CASCADE' }
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   exercise: Exercise
 }

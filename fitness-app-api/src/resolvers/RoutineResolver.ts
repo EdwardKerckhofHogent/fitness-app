@@ -57,6 +57,51 @@ export class RoutineResolver {
     return { routine }
   }
 
+  @Mutation(_ => RoutineResponse)
+  async updateRoutine(
+    @Arg('input') { id, name, exercises }: RoutineInput
+  ): Promise<RoutineResponse> {
+    const routine = await Routine.findOne(id, {
+      relations: ['exercises', 'exercises.sets']
+    })
+
+    if (!routine) {
+      return {
+        errors: [
+          {
+            path: 'Routine id',
+            message: `No routine with id: ${id} found`
+          }
+        ]
+      }
+    }
+
+    if (routine.name !== name) {
+      routine.name = name
+    }
+
+    let countDiff = Math.abs(exercises.length - routine.exercises.length)
+    for (let i = countDiff; i > 0; i--) {
+      await Exercise.delete(routine.exercises[i].id)
+    }
+
+    exercises.forEach((ex, i) => {
+      ex.sets.forEach((set, j) => {
+        if (
+          set.kg != routine.exercises[i].sets[j].kg ||
+          set.reps != routine.exercises[i].sets[j].reps
+        ) {
+          routine.exercises[i].sets[j].kg = set.kg
+          routine.exercises[i].sets[j].reps = set.reps
+        }
+      })
+    })
+
+    await routine.save()
+
+    return { routine }
+  }
+
   @Query(_ => RoutineResponse)
   @UseMiddleware(isAuth)
   async getRoutines(@Ctx() { payload }: MyContext): Promise<RoutineResponse> {

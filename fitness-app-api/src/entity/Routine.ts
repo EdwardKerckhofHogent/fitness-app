@@ -30,7 +30,7 @@ export class Routine extends BaseEntity {
   @OneToMany(
     _type => Exercise,
     exercise => exercise.routine,
-    { onDelete: 'CASCADE' }
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   exercises: Exercise[]
 

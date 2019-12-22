@@ -33,7 +33,7 @@ export class Exercise extends BaseEntity {
   @ManyToOne(
     _type => Routine,
     routine => routine.exercises,
-    { onDelete: 'CASCADE' }
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   routine: Routine
 
@@ -41,7 +41,7 @@ export class Exercise extends BaseEntity {
   @OneToMany(
     _type => ExerciseSet,
     set => set.exercise,
-    { onDelete: 'CASCADE' }
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   sets: ExerciseSet[]
 }
