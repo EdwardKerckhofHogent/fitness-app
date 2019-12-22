@@ -12,12 +12,13 @@ struct User {
     var id: Int
     var email: String
     var routines: [Routine]
-    var nickname: String
+    lazy var nickname: String = {
+        return String(email.split(separator: "@")[0])
+    }()
     
     init(id: Int, email: String, routines: [Routine]) {
         self.id = id
         self.email = email
         self.routines = routines
-        self.nickname = String(email.split(separator: "@")[0])
     }
 }
