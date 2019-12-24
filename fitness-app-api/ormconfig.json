@@ -27,7 +27,8 @@
     "migrations": ["src/migration/*.*"],
     "cli": {
       "migrationsDir": "src/migration"
-    }
+    },
+    "logging": true
   },
   {
     "name": "default",

@@ -16,7 +16,6 @@ class StartViewController: UIViewController {
     @IBOutlet var stopRoutineButton: UIButton!
     @IBOutlet var timerLabel: UILabel!
     
-    let networkManager = NetworkManager.shared
     var routine: Routine?
     
     var timer: Timer?
@@ -27,6 +26,7 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateUI()
     }
     
@@ -94,9 +94,6 @@ class StartViewController: UIViewController {
         
         // Start/pause button
         toggleButtons(pauseIsHidden: true)
-        
-        // Hide stop button
-        stopRoutineButton.isHidden = true
     }
     
     func toggleButtons(pauseIsHidden: Bool) {

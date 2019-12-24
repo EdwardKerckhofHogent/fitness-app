@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Apollo
 
 class HomeViewController: UIViewController {
     @IBOutlet var headerView: Header!
@@ -19,11 +20,13 @@ class HomeViewController: UIViewController {
     var accessToken: String = ""
     var user: User?
     var selectedRoutine: Routine?
+    var meWatcher: GraphQLQueryWatcher<MeQuery>?
+    var created: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
             
-        let watcher = networkManager.apollo.watch(query: MeQuery()) { result in
+        meWatcher = networkManager.apollo.watch(query: MeQuery()) { result in
             guard let data = try? result.get().data?.me else {
                 print("Server Error: Cannot get me")
                 return
@@ -46,18 +49,22 @@ class HomeViewController: UIViewController {
                 }
                 
                 self.user = User(id: data.user!.id, email: data.user!.email, routines: userRoutines)
+                
                 self.networkManager.loggedInUser = self.user
-                self.updateUI()
+                if !self.created {
+                    self.updateUI()
+                    self.created = true
+                }
                 self.routinesTableView.reloadData()
             }
         }
-        watcher.refetch()
+        meWatcher!.refetch()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             if let destinationVC = segue.destination as? EditViewController {
-                destinationVC.routine = self.selectedRoutine
+                destinationVC.routine = selectedRoutine
             }
         }
         
@@ -66,6 +73,7 @@ class HomeViewController: UIViewController {
     @IBAction func routinesButtonTapped(_ sender: Any) {
         if user!.routines.count > 0 {
             routinesTableView.isHidden = !routinesTableView.isHidden
+            meWatcher?.refetch()
         } else {
             routinesTableView.isHidden = true
         }
@@ -127,7 +135,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(user!.routines[indexPath.row].name)
         selectedRoutine = user!.routines[indexPath.row]
         routinesButton.setTitle(selectedRoutine!.name, for: .normal)
         routinesTableView.isHidden = true

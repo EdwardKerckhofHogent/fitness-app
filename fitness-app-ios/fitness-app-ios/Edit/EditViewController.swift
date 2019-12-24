@@ -13,16 +13,20 @@ class EditViewController: UIViewController {
     @IBOutlet var exercisesTableView: UITableView!
     @IBOutlet var saveRoutineButton: UIButton!
     @IBOutlet var startRoutineButton: UIButton!
+    @IBOutlet var newNameTextField: UITextField!
     
     let networkManager = NetworkManager.shared
     var routine: Routine?
     var dbRoutine: Routine?
+    var newRoutineName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(routine!.id)
+        
         // Get routine by id from db
-        networkManager.apollo.fetch(query: GetRoutineByIdQuery(input: Double(routine!.id))) { result in
+        let watcher = networkManager.apollo.watch(query: GetRoutineByIdQuery(input: Double(routine!.id))) { result in
             guard let data = try? result.get().data?.getRoutine else {
                 print("Server Error: Cannot get routine")
                 return
@@ -42,15 +46,13 @@ class EditViewController: UIViewController {
                 }
                 
                 self.dbRoutine = Routine(id: data.routine!.id, name: data.routine!.name, exercises: routineExercises)
-                
+                self.newRoutineName = data.routine!.name
                 self.exercisesTableView.reloadData()
+                
+                self.updateUI()
             }
         }
-        
-        routineNameLabel.text = routine!.name
-        
-        exercisesTableView.delegate = self
-        exercisesTableView.dataSource = self
+        watcher.refetch()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,16 +66,24 @@ class EditViewController: UIViewController {
     @IBAction func saveRoutineButtonTapped(_ sender: UIButton) {
         var dbExercises: [ExerciseInput] = []
         var dbSets: [SetInput] = []
-        for ex in dbRoutine!.exercises {
-            for set in ex.sets {
-                print(set.kg)
-                dbSets.append(SetInput.init(kg: set.kg, reps: set.reps))
+        for (i, ex) in dbRoutine!.exercises.enumerated() {
+            for (j, _) in ex.sets.enumerated() {
+                let cell = exercisesTableView.cellForRow(at: IndexPath(row: j, section: i)) as! ExerciseSetTableViewCell
+                dbSets.append(SetInput.init(kg: Double(cell.amountKGTextField.text!)!, reps: Double(cell.amountRepsTextField.text!)!))
+                
+                dbRoutine!.exercises[i].sets[j].kg = Double(cell.amountKGTextField.text!)!
+                dbRoutine!.exercises[i].sets[j].reps = Double(cell.amountRepsTextField.text!)!
             }
             dbExercises.append(ExerciseInput.init(name: ex.name, sets: dbSets))
             dbSets = []
         }
         
-        networkManager.apollo.perform(mutation: UpdateRoutineMutation(input: RoutineInput.init(id: Double(dbRoutine!.id), name: dbRoutine!.name, exercises: dbExercises))) { result in
+        routineNameLabel.text = newRoutineName
+        dbRoutine!.name = newRoutineName!
+        routineNameLabel.isHidden = false
+        newNameTextField.isHidden = true
+        
+        networkManager.apollo.perform(mutation: UpdateRoutineMutation(input: RoutineInput.init(id: Double(dbRoutine!.id), name: newRoutineName!, exercises: dbExercises))) { result in
             guard let _ = try? result.get().data?.updateRoutine else {
                 print("Server Error: Cannot get routine")
                 return
@@ -81,9 +91,33 @@ class EditViewController: UIViewController {
         }
     }
     
+    @IBAction func newRoutineNameEditingDidChange(_ sender: UITextField) {
+        newRoutineName = newNameTextField.text!
+    }
     
     @IBAction func startRoutineButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "StartSegue", sender: nil)
+    }
+    
+    func updateUI() {
+        routineNameLabel.isHidden = false
+        routineNameLabel.text = newRoutineName
+        newNameTextField.isHidden = true
+        newNameTextField.text = newRoutineName
+        
+        exercisesTableView.delegate = self
+        exercisesTableView.dataSource = self
+        
+        
+        // URL: https://stackoverflow.com/questions/33658521/how-to-make-a-uilabel-clickable
+        let tap = UITapGestureRecognizer(target: self, action: #selector(EditViewController.tapFunction))
+        routineNameLabel.isUserInteractionEnabled = true
+        routineNameLabel.addGestureRecognizer(tap)
+    }
+    
+    @IBAction func tapFunction(sender: UITapGestureRecognizer) {
+        routineNameLabel.isHidden = true
+        newNameTextField.isHidden = false
     }
 }
 
