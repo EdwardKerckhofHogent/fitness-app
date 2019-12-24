@@ -61,10 +61,10 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-BL-7QP">
-                                <rect key="frame" x="30" y="408" width="200" height="367"/>
+                                <rect key="frame" x="30" y="408" width="200" height="313"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="367" id="dQJ-FV-ZUl"/>
+                                    <constraint firstAttribute="height" constant="313" id="IV3-9u-cRb"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RoutineCell" id="vJo-rO-3Yq" customClass="HomeRoutineTableViewCell" customModule="fitness_app_ios" customModuleProvider="target">
@@ -75,7 +75,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rug &amp; Biceps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-zq-bcM">
-                                                    <rect key="frame" x="16" y="11.5" width="168" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="168" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="168" id="VJN-qF-vda"/>
                                                     </constraints>
@@ -85,8 +85,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ySP-zq-bcM" firstAttribute="top" secondItem="2AM-Jv-ZDR" secondAttribute="topMargin" id="CCo-EK-noH"/>
                                                 <constraint firstItem="ySP-zq-bcM" firstAttribute="bottom" secondItem="2AM-Jv-ZDR" secondAttribute="bottomMargin" id="DdE-XH-bKT"/>
                                                 <constraint firstItem="ySP-zq-bcM" firstAttribute="leading" secondItem="2AM-Jv-ZDR" secondAttribute="leadingMargin" id="J0o-pK-ATe"/>
+                                                <constraint firstItem="ySP-zq-bcM" firstAttribute="trailing" secondItem="2AM-Jv-ZDR" secondAttribute="trailingMargin" id="XQB-Em-r60"/>
+                                                <constraint firstItem="ySP-zq-bcM" firstAttribute="centerY" secondItem="2AM-Jv-ZDR" secondAttribute="centerY" id="wIo-ot-Ilz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>

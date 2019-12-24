@@ -21,8 +21,6 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(routine!.id)
-        
         // Get routine by id from db
         networkManager.apollo.fetch(query: GetRoutineByIdQuery(input: Double(routine!.id))) { result in
             guard let data = try? result.get().data?.getRoutine else {
@@ -44,6 +42,7 @@ class EditViewController: UIViewController {
                 }
                 
                 self.dbRoutine = Routine(id: data.routine!.id, name: data.routine!.name, exercises: routineExercises)
+                
                 self.exercisesTableView.reloadData()
             }
         }
@@ -53,7 +52,39 @@ class EditViewController: UIViewController {
         exercisesTableView.delegate = self
         exercisesTableView.dataSource = self
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "StartSegue" {
+            if let destinationVC = segue.destination as? StartViewController {
+                destinationVC.routine = self.dbRoutine
+            }
+        }
+    }
+    
+    @IBAction func saveRoutineButtonTapped(_ sender: UIButton) {
+        var dbExercises: [ExerciseInput] = []
+        var dbSets: [SetInput] = []
+        for ex in dbRoutine!.exercises {
+            for set in ex.sets {
+                print(set.kg)
+                dbSets.append(SetInput.init(kg: set.kg, reps: set.reps))
+            }
+            dbExercises.append(ExerciseInput.init(name: ex.name, sets: dbSets))
+            dbSets = []
+        }
+        
+        networkManager.apollo.perform(mutation: UpdateRoutineMutation(input: RoutineInput.init(id: Double(dbRoutine!.id), name: dbRoutine!.name, exercises: dbExercises))) { result in
+            guard let _ = try? result.get().data?.updateRoutine else {
+                print("Server Error: Cannot get routine")
+                return
+            }
+        }
+    }
+    
+    
+    @IBAction func startRoutineButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "StartSegue", sender: nil)
+    }
 }
 
 extension EditViewController: UITableViewDataSource, UITableViewDelegate {
@@ -78,11 +109,6 @@ extension EditViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    // Make rows editable
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return dbRoutine?.exercises.count ?? 0
     }
@@ -94,6 +120,11 @@ extension EditViewController: UITableViewDataSource, UITableViewDelegate {
         label.backgroundColor = UIColor.white
         label.textColor = UIColor(red:0.16, green:0.56, blue:0.10, alpha:1.0)
         return label
+    }
+    
+    // Make rows editable
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

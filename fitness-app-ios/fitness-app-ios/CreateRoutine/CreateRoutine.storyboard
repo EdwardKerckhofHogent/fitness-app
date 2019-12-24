@@ -93,17 +93,24 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="354" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="135" translatesAutoresizingMaskIntoConstraints="NO" id="C6p-x8-OJ2">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C6p-x8-OJ2">
                                                                     <rect key="frame" x="20" y="11" width="314" height="21"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OEF 1:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddk-on-bdf">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="53" height="21"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="21"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="21" id="TJA-f1-G1T"/>
+                                                                                <constraint firstAttribute="width" constant="70" id="UD1-gg-3Np"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENCH PRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EM1-sQ-rG3">
-                                                                            <rect key="frame" x="188" y="0.0" width="126" height="21"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENCH PRESS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EM1-sQ-rG3">
+                                                                            <rect key="frame" x="114" y="0.0" width="200" height="21"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="200" id="NL7-U8-6MZ"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                                                             <color key="textColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>

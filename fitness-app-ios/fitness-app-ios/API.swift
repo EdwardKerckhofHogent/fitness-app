@@ -41,8 +41,17 @@ public struct UserInput: GraphQLMapConvertible {
 public struct RoutineInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(name: String, exercises: [ExerciseInput]) {
-    graphQLMap = ["name": name, "exercises": exercises]
+  public init(id: Swift.Optional<Double?> = nil, name: String, exercises: [ExerciseInput]) {
+    graphQLMap = ["id": id, "name": name, "exercises": exercises]
+  }
+
+  public var id: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["id"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
   }
 
   public var name: String {
@@ -67,8 +76,17 @@ public struct RoutineInput: GraphQLMapConvertible {
 public struct ExerciseInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(name: String, sets: [SetInput]) {
-    graphQLMap = ["name": name, "sets": sets]
+  public init(id: Swift.Optional<Double?> = nil, name: String, sets: [SetInput]) {
+    graphQLMap = ["id": id, "name": name, "sets": sets]
+  }
+
+  public var id: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["id"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
   }
 
   public var name: String {
@@ -93,8 +111,17 @@ public struct ExerciseInput: GraphQLMapConvertible {
 public struct SetInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(kg: Double, reps: Double) {
-    graphQLMap = ["kg": kg, "reps": reps]
+  public init(id: Swift.Optional<Double?> = nil, kg: Double, reps: Double) {
+    graphQLMap = ["id": id, "kg": kg, "reps": reps]
+  }
+
+  public var id: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["id"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
   }
 
   public var kg: Double {
@@ -1943,6 +1970,55 @@ public final class GetRoutineByIdQuery: GraphQLQuery {
             resultMap.updateValue(newValue, forKey: "message")
           }
         }
+      }
+    }
+  }
+}
+
+public final class UpdateRoutineMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation updateRoutine($input: RoutineInput!) {
+      updateRoutine(input: $input)
+    }
+    """
+
+  public let operationName = "updateRoutine"
+
+  public var input: RoutineInput
+
+  public init(input: RoutineInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateRoutine", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.scalar(Bool.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateRoutine: Bool) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateRoutine": updateRoutine])
+    }
+
+    public var updateRoutine: Bool {
+      get {
+        return resultMap["updateRoutine"]! as! Bool
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "updateRoutine")
       }
     }
   }

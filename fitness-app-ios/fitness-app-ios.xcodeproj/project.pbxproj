@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B06AB2623AFC7CF001E8ACA /* UpdateRoutine.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B06AB2523AFC7CF001E8ACA /* UpdateRoutine.graphql */; };
 		2B0C910523A042E2003F5A86 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C910423A042E2003F5A86 /* CustomError.swift */; };
+		2B15C91723B2413900689B35 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B15C91623B2413900689B35 /* Start.storyboard */; };
+		2B15C91923B2414B00689B35 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B15C91823B2414B00689B35 /* StartViewController.swift */; };
 		2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 2B1DA94D23A17D4D00A904B0 /* Me.graphql */; };
 		2B1DA95123A1808500A904B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1DA95023A1808500A904B0 /* User.swift */; };
 		2B4A8CEF239D343000AF318C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A8CEE239D343000AF318C /* AppDelegate.swift */; };
@@ -74,7 +77,10 @@
 
 /* Begin PBXFileReference section */
 		1427B20B277E9D05ACD2E263 /* Pods-fitness-app-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitness-app-ios.release.xcconfig"; path = "Target Support Files/Pods-fitness-app-ios/Pods-fitness-app-ios.release.xcconfig"; sourceTree = "<group>"; };
+		2B06AB2523AFC7CF001E8ACA /* UpdateRoutine.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateRoutine.graphql; sourceTree = "<group>"; };
 		2B0C910423A042E2003F5A86 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		2B15C91623B2413900689B35 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		2B15C91823B2414B00689B35 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2B1DA94D23A17D4D00A904B0 /* Me.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Me.graphql; sourceTree = "<group>"; };
 		2B1DA95023A1808500A904B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2B3DBCDFD9137BDB5FB4B280 /* Pods_fitness_app_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitness_app_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +178,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2B15C91523B2412D00689B35 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				2B15C91623B2413900689B35 /* Start.storyboard */,
+				2B15C91823B2414B00689B35 /* StartViewController.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
 		2B1DA94F23A1807700A904B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +278,7 @@
 		2B6CD36B23AD43710087DDAC /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				2B15C91523B2412D00689B35 /* Start */,
 				2B6CD36C23AD43850087DDAC /* Edit.storyboard */,
 				2B6CD36E23AD43970087DDAC /* EditViewController.swift */,
 			);
@@ -286,6 +302,7 @@
 				2B8D801523A56592000DEEEC /* AddRoutine.graphql */,
 				2B9E43BF23A9430200AE78F0 /* DeleteRoutine.graphql */,
 				2B6CD37023AD52CB0087DDAC /* GetRoutine.graphql */,
+				2B06AB2523AFC7CF001E8ACA /* UpdateRoutine.graphql */,
 			);
 			path = Routine;
 			sourceTree = "<group>";
@@ -537,8 +554,10 @@
 				2B6CD37123AD52CB0087DDAC /* GetRoutine.graphql in Resources */,
 				2B1DA94E23A17D4D00A904B0 /* Me.graphql in Resources */,
 				2B4A8CFB239D343100AF318C /* LaunchScreen.storyboard in Resources */,
+				2B06AB2623AFC7CF001E8ACA /* UpdateRoutine.graphql in Resources */,
 				2B4A8CF8239D343100AF318C /* Assets.xcassets in Resources */,
 				2B4A8D30239D3EF100AF318C /* Montserrat.otf in Resources */,
+				2B15C91723B2413900689B35 /* Start.storyboard in Resources */,
 				2B6CD36D23AD43850087DDAC /* Edit.storyboard in Resources */,
 				2B4A8D2E239D3EF100AF318C /* MontserratMedium.ttf in Resources */,
 				2B8D801623A56592000DEEEC /* AddRoutine.graphql in Resources */,
@@ -690,6 +709,7 @@
 			files = (
 				2B1DA95123A1808500A904B0 /* User.swift in Sources */,
 				2B4A8D21239D352400AF318C /* AuthViewController.swift in Sources */,
+				2B15C91923B2414B00689B35 /* StartViewController.swift in Sources */,
 				2BF9285723A3F73000606864 /* StringExtension.swift in Sources */,
 				2B9E43C823A9601E00AE78F0 /* ExerciseTableViewCell.swift in Sources */,
 				2BBA42D8239D7C1300BA9D4F /* Validator.swift in Sources */,

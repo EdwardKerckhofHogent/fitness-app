@@ -89,7 +89,7 @@ class AuthViewController: UIViewController {
     @IBAction func registerButtonTapped(_ sender: Any) {
         errorMessages = []
         
-        let registerEmailValidationResponse =  validator.validate(input: registerEmailTextField, with: [.notEmpty, .minLength(length: 5)])
+        let registerEmailValidationResponse =  validator.validate(input: registerEmailTextField, with: [.notEmpty, .minLength(length: 5), .validEmail])
         let registerPasswordValidationResponse = validator.validate(input: registerPasswordTextField, with: [.notEmpty, .minLength(length: 5)])
         let registerRepeatPasswordValidationResponse = validator.validate(input: registerRepeatPasswordTextField, with: [.notEmpty, .minLength(length: 5)])
         

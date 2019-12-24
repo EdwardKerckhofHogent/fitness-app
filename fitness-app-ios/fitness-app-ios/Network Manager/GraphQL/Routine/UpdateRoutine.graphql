@@ -1,0 +1,3 @@
+mutation updateRoutine($input: RoutineInput!) {
+  updateRoutine(input: $input)
+}

@@ -20,8 +20,6 @@ class HomeViewController: UIViewController {
     var user: User?
     var selectedRoutine: Routine?
     
-    lazy var refreshControl = UIRefreshControl()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
             
@@ -136,6 +134,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         continueButton.isHidden = false
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let routine = user!.routines[indexPath.row]
@@ -147,6 +153,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             
             if user!.routines.count == 0 {
                 routinesTableView.isHidden = true
+                routinesButton.setTitle("Geen routines", for: .normal)
             }
             
             routinesTableView.endUpdates()

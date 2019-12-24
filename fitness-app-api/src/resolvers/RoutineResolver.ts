@@ -57,24 +57,15 @@ export class RoutineResolver {
     return { routine }
   }
 
-  @Mutation(_ => RoutineResponse)
+  @Mutation(_ => Boolean)
   async updateRoutine(
     @Arg('input') { id, name, exercises }: RoutineInput
-  ): Promise<RoutineResponse> {
+  ): Promise<Boolean> {
     const routine = await Routine.findOne(id, {
       relations: ['exercises', 'exercises.sets']
     })
 
-    if (!routine) {
-      return {
-        errors: [
-          {
-            path: 'Routine id',
-            message: `No routine with id: ${id} found`
-          }
-        ]
-      }
-    }
+    if (!routine) return false
 
     if (routine.name !== name) {
       routine.name = name
@@ -99,7 +90,7 @@ export class RoutineResolver {
 
     await routine.save()
 
-    return { routine }
+    return true
   }
 
   @Query(_ => RoutineResponse)

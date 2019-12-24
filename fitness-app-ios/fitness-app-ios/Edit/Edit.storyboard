@@ -146,6 +146,9 @@
                                         <state key="normal" title="Opslaan">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveRoutineButtonTapped:" destination="24s-jU-LPa" eventType="touchUpInside" id="259-Cp-VGV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCi-yw-1DF">
                                         <rect key="frame" x="145" y="0.0" width="116" height="33"/>
@@ -153,6 +156,9 @@
                                         <state key="normal" title="Start Routine">
                                             <color key="titleColor" red="0.22127327320000001" green="0.60559236999999999" blue="0.16039469840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="startRoutineButtonTapped:" destination="24s-jU-LPa" eventType="touchUpInside" id="vmI-GS-XEd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -175,11 +181,20 @@
                         <outlet property="routineNameLabel" destination="Fpj-2R-tlm" id="XyQ-Z7-O7g"/>
                         <outlet property="saveRoutineButton" destination="yQc-l2-doo" id="i59-wq-J50"/>
                         <outlet property="startRoutineButton" destination="gCi-yw-1DF" id="ZCX-7P-Te4"/>
+                        <segue destination="vAD-u2-Wpm" kind="presentation" identifier="StartSegue" modalPresentationStyle="fullScreen" id="27C-p1-bpt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krr-xA-XKM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134.78260869565219" y="86.383928571428569"/>
+        </scene>
+        <!--Start-->
+        <scene sceneID="x1G-DP-p9f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Start" id="vAD-u2-Wpm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQM-19-42h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="86"/>
         </scene>
     </scenes>
 </document>
